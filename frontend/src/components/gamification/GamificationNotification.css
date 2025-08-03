@@ -1,0 +1,381 @@
+/* Gamification Notifications Styles */
+
+.gamification-notifications-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  pointer-events: none;
+}
+
+.gamification-notification {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e9ecef;
+  min-width: 320px;
+  max-width: 400px;
+  pointer-events: auto;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: relative;
+}
+
+.gamification-notification::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--notification-bg);
+}
+
+.gamification-notification.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.gamification-notification.leaving {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* Notification Content */
+.notification-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  position: relative;
+}
+
+.notification-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--notification-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.notification-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #343a40;
+  margin: 0 0 0.25rem 0;
+}
+
+.notification-message {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+.xp-gained {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--notification-color);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.notification-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  color: #adb5bd;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notification-close:hover {
+  background: #f8f9fa;
+  color: #6c757d;
+}
+
+/* Badge Showcase */
+.badge-showcase {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1rem;
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.badge-icon-large {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--notification-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.badge-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.badge-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #343a40;
+  margin-bottom: 0.25rem;
+}
+
+.badge-description {
+  font-size: 0.875rem;
+  color: #6c757d;
+  line-height: 1.4;
+}
+
+/* Notification Types */
+.gamification-notification.xp .notification-icon {
+  animation: xpPulse 0.6s ease-out;
+}
+
+.gamification-notification.badge .notification-icon {
+  animation: badgeBounce 0.8s ease-out;
+}
+
+.gamification-notification.level .notification-icon {
+  animation: levelGlow 1s ease-out;
+}
+
+.gamification-notification.streak .notification-icon {
+  animation: streakFlash 0.6s ease-out;
+}
+
+/* Animations */
+@keyframes xpPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes badgeBounce {
+  0% {
+    transform: scale(0.3) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(-10deg);
+  }
+  70% {
+    transform: scale(0.95) rotate(5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes levelGlow {
+  0% {
+    transform: scale(0.8);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 8px 32px var(--notification-color);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes streakFlash {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  25% {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+  50% {
+    transform: scale(1.1);
+    filter: brightness(1.4);
+  }
+  75% {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+}
+
+/* Hover Effects */
+.gamification-notification:hover {
+  transform: translateX(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.gamification-notification:hover .notification-icon {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gamification-notifications-container {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+  }
+
+  .gamification-notification {
+    min-width: auto;
+    max-width: none;
+  }
+
+  .notification-content {
+    padding: 0.75rem;
+  }
+
+  .notification-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .badge-showcase {
+    padding: 0.75rem;
+  }
+
+  .badge-icon-large {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .notification-content {
+    gap: 0.75rem;
+  }
+
+  .notification-title {
+    font-size: 0.875rem;
+  }
+
+  .notification-message {
+    font-size: 0.8125rem;
+  }
+
+  .badge-name {
+    font-size: 0.875rem;
+  }
+
+  .badge-description {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .gamification-notification {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: #e2e8f0;
+  }
+
+  .notification-title {
+    color: #e2e8f0;
+  }
+
+  .notification-message {
+    color: #a0aec0;
+  }
+
+  .notification-close {
+    color: #718096;
+  }
+
+  .notification-close:hover {
+    background: #4a5568;
+    color: #a0aec0;
+  }
+
+  .badge-showcase {
+    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+    border-color: #4a5568;
+  }
+
+  .badge-name {
+    color: #e2e8f0;
+  }
+
+  .badge-description {
+    color: #a0aec0;
+  }
+}
+
+/* Multiple notifications stacking */
+.gamification-notification:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.gamification-notification:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.gamification-notification:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+/* Special effects for rare achievements */
+.gamification-notification.rare {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  color: #744210;
+  animation: rareShimmer 2s ease-in-out infinite;
+}
+
+.gamification-notification.rare .notification-title,
+.gamification-notification.rare .notification-message {
+  color: #744210;
+}
+
+@keyframes rareShimmer {
+  0%,
+  100% {
+    box-shadow: 0 8px 32px rgba(255, 215, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 12px 48px rgba(255, 215, 0, 0.6);
+  }
+}

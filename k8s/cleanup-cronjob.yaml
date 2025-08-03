@@ -1,0 +1,88 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: scribo-cleanup-free-essays
+  namespace: scribo
+  labels:
+    app: scribo
+    component: cleanup
+spec:
+  # Executar diariamente às 2:00 AM UTC
+  schedule: "0 2 * * *"
+  timeZone: "UTC"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  startingDeadlineSeconds: 300
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: scribo
+            component: cleanup
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: cleanup
+            image: scribo-backend:latest
+            imagePullPolicy: Always
+            command:
+            - python
+            - cleanup_free_essays.py
+            - --days=30
+            - --verbose
+            env:
+            - name: USE_POSTGRES
+              value: "true"
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: scribo-secrets
+                  key: database-url
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: scribo-secrets
+                  key: jwt-secret
+            - name: GOOGLE_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: scribo-secrets
+                  key: google-client-id
+            - name: GOOGLE_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: scribo-secrets
+                  key: google-client-secret
+            resources:
+              requests:
+                memory: "256Mi"
+                cpu: "100m"
+              limits:
+                memory: "512Mi"
+                cpu: "500m"
+            volumeMounts:
+            - name: cleanup-logs
+              mountPath: /app/logs
+          volumes:
+          - name: cleanup-logs
+            persistentVolumeClaim:
+              claimName: scribo-logs-pvc
+          # Tolerations para executar em qualquer node
+          tolerations:
+          - operator: Exists
+            effect: NoSchedule
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: scribo-logs-pvc
+  namespace: scribo
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: standard

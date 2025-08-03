@@ -1,0 +1,363 @@
+{
+  "temas": [
+    {
+      "id": 1,
+      "titulo": "Viver e Aprender",
+      "descricao": "Desenvolver uma reflexão sobre a relação entre as experiências da vida e o processo de aprendizado contínuo.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 1998,
+      "area": "Sociedade/Filosofia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 2,
+      "titulo": "Cidadania e participação social",
+      "descricao": "Discutir a importância da cidadania e das diversas formas de participação social para a construção de uma sociedade democrática.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 1999,
+      "area": "Cidadania/Política",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 3,
+      "titulo": "Direitos da criança e do adolescente: como enfrentar esse desafio nacional?",
+      "descricao": "Analisar os desafios para a efetivação dos direitos da criança e do adolescente no Brasil e propor caminhos para superá-los.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2000,
+      "area": "Direitos Humanos/Cidadania",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 4,
+      "titulo": "Desenvolvimento e preservação ambiental: como conciliar os interesses em conflito?",
+      "descricao": "Debater sobre a necessidade de conciliar o desenvolvimento econômico com a preservação do meio ambiente, abordando os conflitos de interesse envolvidos.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2001,
+      "area": "Meio Ambiente/Economia",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 5,
+      "titulo": "O direito de votar: como fazer dessa conquista um meio para promover as transformações sociais de que o Brasil necessita?",
+      "descricao": "Refletir sobre o poder do voto como instrumento de transformação social no Brasil e como utilizá-lo de forma consciente.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2002,
+      "area": "Política/Cidadania",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 6,
+      "titulo": "A violência na sociedade brasileira: como mudar as regras desse jogo?",
+      "descricao": "Analisar as causas e consequências da violência na sociedade brasileira e propor estratégias para reverter esse quadro.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2003,
+      "area": "Segurança/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 7,
+      "titulo": "Como garantir a liberdade de informação e evitar abusos nos meios de comunicação?",
+      "descricao": "Discutir o equilíbrio entre a garantia da liberdade de informação e a necessidade de coibir abusos e desinformação na mídia.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2004,
+      "area": "Comunicação/Direitos",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 8,
+      "titulo": "O trabalho infantil na realidade brasileira",
+      "descricao": "Analisar a persistência do trabalho infantil no Brasil, suas causas e consequências para o desenvolvimento das crianças e do país.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2005,
+      "area": "Trabalho/Direitos Humanos",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 9,
+      "titulo": "O poder de transformação da leitura",
+      "descricao": "Argumentar sobre a capacidade da leitura de transformar indivíduos e a sociedade, promovendo conhecimento e senso crítico.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2006,
+      "area": "Educação/Cultura",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 10,
+      "titulo": "O desafio de se conviver com a diferença",
+      "descricao": "Discutir os desafios e a importância da convivência com a diversidade (cultural, social, religiosa, etc.) na sociedade contemporânea.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2007,
+      "area": "Sociedade/Direitos Humanos",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 11,
+      "titulo": "Como preservar a floresta Amazônica",
+      "descricao": "Debater entre as diferentes estratégias propostas (suspensão do desmatamento, incentivos financeiros ou fiscalização rigorosa) para a preservação da Amazônia.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2008,
+      "area": "Meio Ambiente/Política",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 12,
+      "titulo": "O indivíduo frente à ética nacional",
+      "descricao": "Refletir sobre o papel e a responsabilidade do indivíduo diante das questões éticas que permeiam a nação brasileira.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2009,
+      "area": "Ética/Cidadania",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 13,
+      "titulo": "O trabalho na construção da dignidade humana",
+      "descricao": "Analisar como o trabalho, para além da função econômica, contribui para a construção da dignidade e identidade do ser humano.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2010,
+      "area": "Trabalho/Filosofia",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 14,
+      "titulo": "Viver em rede no século 21: os limites entre o público e o privado",
+      "descricao": "Discutir as transformações nas noções de público e privado causadas pela internet e pelas redes sociais no século 21.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2011,
+      "area": "Tecnologia/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 15,
+      "titulo": "Movimento imigratório para o Brasil no século 21",
+      "descricao": "Analisar as características, desafios e impactos do novo fluxo imigratório para o Brasil no século 21.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2012,
+      "area": "Sociedade/Geopolítica",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 16,
+      "titulo": "Efeitos da implantação da Lei Seca no Brasil",
+      "descricao": "Avaliar os resultados, positivos e negativos, da implementação da Lei Seca no Brasil, considerando seus impactos sociais e na saúde pública.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2013,
+      "area": "Sociedade/Legislação",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 17,
+      "titulo": "Publicidade infantil em questão no Brasil",
+      "descricao": "Debater sobre a regulamentação da publicidade voltada para o público infantil no Brasil, ponderando seus efeitos e a necessidade de limites.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2014,
+      "area": "Comunicação/Direitos",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 18,
+      "titulo": "A persistência da violência contra a mulher na sociedade brasileira",
+      "descricao": "Analisar as raízes históricas e culturais que contribuem para a persistência da violência contra a mulher no Brasil e discutir formas de combatê-la.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2015,
+      "area": "Direitos Humanos/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 19,
+      "titulo": "Caminhos para combater a intolerância religiosa no Brasil",
+      "descricao": "Discutir as manifestações de intolerância religiosa no Brasil e propor caminhos para promover o respeito e a liberdade de crença.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2016,
+      "area": "Direitos Humanos/Cultura",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 20,
+      "titulo": "Caminhos para combater o racismo no Brasil",
+      "descricao": "Analisar as formas de manifestação do racismo na sociedade brasileira e propor estratégias eficazes para seu combate.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2016,
+      "area": "Direitos Humanos/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 21,
+      "titulo": "Desafios para a formação educacional de surdos no Brasil",
+      "descricao": "Debater sobre os obstáculos e desafios enfrentados para garantir uma formação educacional inclusiva e de qualidade para a comunidade surda no Brasil.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2017,
+      "area": "Educação/Inclusão",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 22,
+      "titulo": "Manipulação do comportamento do usuário pelo controle de dados na internet",
+      "descricao": "Analisar como o controle e o uso de dados pessoais na internet podem ser utilizados para manipular o comportamento dos usuários e discutir os impactos disso.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2018,
+      "area": "Tecnologia/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 23,
+      "titulo": "Democratização do acesso ao cinema no Brasil",
+      "descricao": "Discutir os empecilhos para o acesso universal ao cinema no Brasil e propor medidas para sua democratização como bem cultural.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2019,
+      "area": "Cultura/Cidadania",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 24,
+      "titulo": "O estigma associado às doenças mentais na sociedade brasileira",
+      "descricao": "Analisar o preconceito e o estigma que cercam as doenças mentais no Brasil e debater a importância do tratamento e da inclusão.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2020,
+      "area": "Saúde/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 25,
+      "titulo": "O desafio de reduzir as desigualdades entre as regiões do Brasil",
+      "descricao": "Discutir os fatores históricos e atuais que contribuem para as desigualdades regionais no Brasil e os desafios para superá-las.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2020,
+      "area": "Geografia/Economia",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 26,
+      "titulo": "Invisibilidade e registro civil: garantia de acesso à cidadania no Brasil",
+      "descricao": "Debater sobre a problemática da falta de registro civil no Brasil e sua relação direta com a negação do acesso à cidadania plena.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2021,
+      "area": "Cidadania/Direitos Humanos",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 27,
+      "titulo": "Os desafios para a valorização das comunidades e povos tradicionais do Brasil",
+      "descricao": "Analisar os desafios enfrentados por comunidades e povos tradicionais (indígenas, quilombolas, ribeirinhos) para a valorização de suas culturas e territórios.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2022,
+      "area": "Direitos Humanos/Cultura",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 28,
+      "titulo": "Medidas para o enfrentamento da recorrência da insegurança alimentar no Brasil",
+      "descricao": "Discutir as causas da volta da insegurança alimentar no Brasil e propor medidas para garantir o direito à alimentação adequada para todos.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2022,
+      "area": "Segurança Alimentar/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 29,
+      "titulo": "Desafios para o enfrentamento da invisibilidade do trabalho de cuidado realizado pela mulher no Brasil",
+      "descricao": "Analisar a invisibilidade e a desvalorização do trabalho de cuidado (doméstico, de filhos, de idosos), majoritariamente feminino, e os desafios para seu reconhecimento.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2023,
+      "area": "Trabalho/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 30,
+      "titulo": "Desafios para a (re)inserção socioeconômica da população em situação de rua no Brasil",
+      "descricao": "Debater sobre os desafios e as políticas públicas necessárias para a reinserção social e econômica da população em situação de rua no país.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2023,
+      "area": "Direitos Humanos/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 31,
+      "titulo": "Desafios para a valorização da herança africana no Brasil",
+      "descricao": "Discutir os desafios para o reconhecimento e a valorização da herança cultural, histórica e social africana na formação do Brasil.",
+      "faculdade": "ENEM",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2024,
+      "area": "Cultura/História",
+      "dificuldade": "convencional"
+    }
+  ],
+  "estilos": [
+    {
+      "nome": "Dissertativo-Argumentativo",
+      "descricao": "Texto que apresenta uma tese e a defende com argumentos consistentes.",
+      "caracteristicas": [
+        "argumentação",
+        "persuasão",
+        "estrutura lógica",
+        "fundamentação"
+      ]
+    },
+    {
+      "nome": "Dissertativo",
+      "descricao": "Texto que expõe ideias sobre um determinado assunto, sem a necessidade obrigatória de defender uma tese específica, focando mais na reflexão e exploração do tema.",
+      "caracteristicas": [
+        "exposição de ideias",
+        "reflexão",
+        "conceituação",
+        "análise"
+      ]
+    }
+  ],
+  "areas": [
+    "Cidadania/Direitos Humanos",
+    "Cidadania/Política",
+    "Comunicação/Direitos",
+    "Cultura/Cidadania",
+    "Cultura/História",
+    "Direitos Humanos/Cidadania",
+    "Direitos Humanos/Cultura",
+    "Direitos Humanos/Sociedade",
+    "Educação/Cultura",
+    "Educação/Inclusão",
+    "Ética/Cidadania",
+    "Geografia/Economia",
+    "Meio Ambiente/Economia",
+    "Meio Ambiente/Política",
+    "Política/Cidadania",
+    "Saúde/Sociedade",
+    "Segurança Alimentar/Sociedade",
+    "Segurança/Sociedade",
+    "Sociedade/Filosofia",
+    "Sociedade/Geopolítica",
+    "Sociedade/Legislação",
+    "Tecnologia/Sociedade",
+    "Trabalho/Direitos Humanos",
+    "Trabalho/Filosofia",
+    "Trabalho/Sociedade"
+  ]
+}

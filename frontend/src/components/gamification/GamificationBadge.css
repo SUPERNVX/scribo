@@ -1,0 +1,135 @@
+.gamification-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.gamification-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.gamification-badge.compact {
+  padding: 0.5rem;
+  gap: 0.5rem;
+  background: transparent;
+  box-shadow: none;
+}
+
+.gamification-badge.compact:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.level-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  background-color: #6b7280 !important;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 40px;
+  justify-content: center;
+  transition: none !important;
+  animation: none !important;
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+}
+
+.xp-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  background: #6b7280 !important;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.badge-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.9;
+}
+
+/* Hover Effects */
+.gamification-badge.compact .level-indicator:hover,
+.gamification-badge.compact .xp-indicator:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+/* FORÇA COR FIXA EM TODOS OS BADGES DE NÍVEL - SEM TRANSIÇÕES */
+.level-indicator,
+.level-indicator *,
+.level-badge,
+.level-badge *,
+.level-badge-small,
+.level-badge-small *,
+.level-badge-large,
+.level-badge-large *,
+.gamification-panel .level-badge,
+.gamification-panel .level-badge *,
+.gamification-panel.compact .level-badge,
+.gamification-panel.compact .level-badge *,
+.profile-dropdown .level-badge-small,
+.profile-dropdown .level-badge-small *,
+[class*='level-'] {
+  background-color: #6b7280 !important;
+  transition: none !important;
+  animation: none !important;
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+}
+
+/* Remove qualquer animação que possa estar sendo aplicada */
+* {
+  animation-play-state: paused !important;
+}
+
+/* Força cor específica se necessário */
+.level-indicator[style*='background'],
+.level-badge[style*='background'],
+.level-badge-small[style*='background'],
+.level-badge-large[style*='background'] {
+  background-color: var(--level-color) !important;
+}
+
+/* FORÇA COR CINZA EM TODOS OS BADGES DE NÍVEL */
+.level-indicator,
+.level-badge,
+.level-badge-small,
+.level-badge-large,
+[style*='background-color'],
+[style*='backgroundColor'] {
+  background-color: #6b7280 !important;
+  background: #6b7280 !important;
+}
+
+/* Força cor específica mesmo com inline styles */
+.gamification-badge .level-indicator[style] {
+  background-color: #6b7280 !important;
+  background: #6b7280 !important;
+}
+
+.profile-dropdown .level-badge-small[style] {
+  background-color: #6b7280 !important;
+  background: #6b7280 !important;
+}

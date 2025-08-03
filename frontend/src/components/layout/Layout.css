@@ -1,0 +1,28 @@
+/* Layout específico para garantir funcionamento */
+.layout-container {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #f8e8ff 0%,
+    #ffe4e6 25%,
+    #fff0e6 50%,
+    #e6f7ff 75%,
+    #f0fff0 100%
+  );
+}
+
+.dark .layout-container {
+  background: linear-gradient(
+    135deg,
+    #2a1f3d 0%,
+    #3d2a2f 25%,
+    #3d3020 50%,
+    #203d3a 75%,
+    #1f3d1f 100%
+  );
+}
+
+.main-content {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}

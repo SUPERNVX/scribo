@@ -1,0 +1,171 @@
+{
+  "temas": [
+    {
+      "id": 133,
+      "titulo": "Comissão da Verdade: qual verdade alcançar?",
+      "descricao": "Debater sobre os objetivos e os possíveis alcances da Comissão da Verdade, refletindo sobre os diferentes conceitos de 'verdade' (histórica, jurídica, pessoal).",
+      "faculdade": "UNIFESP",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2012,
+      "area": "História/Política",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 134,
+      "titulo": "Programa de espionagem norte-americano: autoproteção ou violação dos direitos das outras nações?",
+      "descricao": "Discutir a legitimidade do programa de espionagem dos EUA, ponderando os argumentos de segurança nacional versus a violação da soberania e dos direitos de outras nações.",
+      "faculdade": "UNIFESP",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2013,
+      "area": "Geopolítica/Direitos",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 135,
+      "titulo": "O financiamento de campanhas eleitorais por empresas deve ser proibido?",
+      "descricao": "Argumentar a favor ou contra a proibição do financiamento empresarial de campanhas eleitorais, analisando seus impactos na democracia e na corrupção.",
+      "faculdade": "UNIFESP",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2014,
+      "area": "Política/Ética",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 136,
+      "titulo": "A adoção da pena de morte pode contribuir para a redução do número de crimes hediondos no Brasil?",
+      "descricao": "Debater a eficácia e a legitimidade da pena de morte como instrumento de redução da criminalidade, especificamente dos crimes hediondos no Brasil.",
+      "faculdade": "UNIFESP",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2015,
+      "area": "Direito/Segurança",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 137,
+      "titulo": "O voto nulo é um ato político eficaz?",
+      "descricao": "Analisar o voto nulo como forma de protesto, discutindo sua eficácia, seus significados e suas consequências para o sistema político.",
+      "faculdade": "UNIFESP",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2016,
+      "area": "Política/Cidadania",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 138,
+      "titulo": "As redes sociais estreitam os laços entre as pessoas ou as tornam egoístas?",
+      "descricao": "Debater o impacto das redes sociais nas relações interpessoais, ponderando se elas promovem a conexão ou o isolamento e o egoísmo.",
+      "faculdade": "UNIFESP",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2017,
+      "area": "Tecnologia/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 139,
+      "titulo": "Eutanásia: entre a liberdade de escolha e a preservação da vida",
+      "descricao": "Discutir o dilema da eutanásia, colocando em perspectiva o direito à liberdade de escolha individual e o princípio da preservação da vida.",
+      "faculdade": "UNIFESP",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2018,
+      "area": "Ética/Saúde",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 140,
+      "titulo": "Vestimentas religiosas no esporte: legitimação da opressão ou liberdade de manifestação religiosa?",
+      "descricao": "Debater o uso de vestimentas religiosas em competições esportivas, analisando os argumentos de que seria uma expressão de liberdade religiosa ou um símbolo de opressão.",
+      "faculdade": "UNIFESP",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2019,
+      "area": "Direitos Humanos/Cultura",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 141,
+      "titulo": "A engenharia genética ameaça a dignidade humana?",
+      "descricao": "Discutir os avanços da engenharia genética e seus potenciais riscos, questionando se suas aplicações podem vir a ameaçar o conceito de dignidade humana.",
+      "faculdade": "UNIFESP",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2020,
+      "area": "Ciência/Ética",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 142,
+      "titulo": "Derrubar monumentos? Os dilemas entre relembrar e apagar o passado",
+      "descricao": "Analisar o movimento de derrubada de monumentos históricos controversos, discutindo o dilema entre a necessidade de ressignificar o passado e o risco de apagá-lo.",
+      "faculdade": "UNIFESP",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2021,
+      "area": "História/Cultura",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 143,
+      "titulo": "É possível conciliar mérito e bem comum?",
+      "descricao": "Refletir sobre a aparente tensão entre o ideal da meritocracia individual e a busca pelo bem comum coletivo, questionando se ambos podem ser conciliados.",
+      "faculdade": "UNIFESP",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2022,
+      "area": "Filosofia/Sociedade",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 144,
+      "titulo": "O fim do anonimato digital reduziria danos causados pelo discurso de ódio?",
+      "descricao": "Debater se a extinção do anonimato na internet seria uma medida eficaz para reduzir os danos do discurso de ódio, ponderando as consequências para a liberdade de expressão.",
+      "faculdade": "UNIFESP",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2023,
+      "area": "Tecnologia/Direitos",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 145,
+      "titulo": "Ser imigrante: entre desafios e oportunidades",
+      "descricao": "Discutir a experiência da imigração, abordando tanto os desafios (xenofobia, barreiras culturais) quanto as oportunidades (crescimento, novas perspectivas).",
+      "faculdade": "UNIFESP",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2024,
+      "area": "Sociedade/Direitos Humanos",
+      "dificuldade": "convencional"
+    }
+  ],
+  "estilos": [
+    {
+      "nome": "Dissertativo-Argumentativo",
+      "descricao": "Texto que apresenta uma tese e a defende com argumentos consistentes.",
+      "caracteristicas": [
+        "argumentação",
+        "persuasão",
+        "estrutura lógica",
+        "fundamentação"
+      ]
+    },
+    {
+      "nome": "Dissertativo",
+      "descricao": "Texto que expõe ideias sobre um determinado assunto, sem a necessidade obrigatória de defender uma tese específica, focando mais na reflexão e exploração do tema.",
+      "caracteristicas": [
+        "exposição de ideias",
+        "reflexão",
+        "conceituação",
+        "análise"
+      ]
+    }
+  ],
+  "areas": [
+    "Ciência/Ética",
+    "Direito/Segurança",
+    "Direitos Humanos/Cultura",
+    "Ética/Saúde",
+    "Filosofia/Sociedade",
+    "Geopolítica/Direitos",
+    "História/Cultura",
+    "História/Política",
+    "Política/Cidadania",
+    "Política/Ética",
+    "Sociedade/Direitos Humanos",
+    "Tecnologia/Direitos",
+    "Tecnologia/Sociedade"
+  ]
+}

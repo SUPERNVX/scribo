@@ -1,0 +1,447 @@
+{
+  "temas": [
+    {
+      "id": 69,
+      "titulo": "Relógios",
+      "descricao": "Dissertar sobre o tema 'relógios', explorando seus significados simbólicos, a relação com o tempo e seu impacto na vida humana.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 1984,
+      "area": "Filosofia/Sociedade",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 70,
+      "titulo": "Necessidade da existência do número clausus para o ingresso nas universidades públicas",
+      "descricao": "Debater sobre a adoção do 'número clausus' (limite de vagas) como critério de ingresso nas universidades públicas brasileiras.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 1985,
+      "area": "Educação/Política",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 71,
+      "titulo": "Trabalho, renda e felicidade",
+      "descricao": "Refletir sobre a complexa relação entre trabalho, a obtenção de renda e a busca pela felicidade na sociedade contemporânea.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 1986,
+      "area": "Filosofia/Sociedade",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 72,
+      "titulo": "Fraternidade humana",
+      "descricao": "Dissertar sobre o conceito de fraternidade humana, seus desafios e sua importância para a convivência social.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 1987,
+      "area": "Filosofia/Sociedade",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 73,
+      "titulo": "Tudo é relativo? A realidade é uma ilusão?",
+      "descricao": "Refletir filosoficamente sobre as questões do relativismo e da natureza da realidade, questionando se ela é objetiva ou uma construção.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 1988,
+      "area": "Filosofia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 74,
+      "titulo": "Relacionar o contexto nacional com a frase 'tudo vale a pena se a alma não é pequena'",
+      "descricao": "Analisar o contexto brasileiro da época à luz do verso de Fernando Pessoa, discutindo o que significa ter uma 'alma grande' diante dos desafios nacionais.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 1989,
+      "area": "Sociedade/Literatura",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 75,
+      "titulo": "Ter opiniões",
+      "descricao": "Dissertar sobre a importância, a formação e a expressão de opiniões próprias em uma sociedade democrática.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 1990,
+      "area": "Cidadania/Filosofia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 76,
+      "titulo": "“Em terra de cego, quem tem um olho é rei”",
+      "descricao": "Analisar o significado e as implicações do provérbio 'Em terra de cego, quem tem um olho é rei' em diferentes contextos sociais e políticos.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 1991,
+      "area": "Sociedade/Filosofia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 77,
+      "titulo": "Acesso ao Ensino Superior",
+      "descricao": "Discutir as questões, desafios e desigualdades relacionadas ao acesso ao Ensino Superior no Brasil.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 1992,
+      "area": "Educação/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 78,
+      "titulo": "Regras sociais",
+      "descricao": "Dissertar sobre a natureza, a função e a necessidade das regras sociais para a organização e convivência em sociedade.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 1993,
+      "area": "Sociologia/Filosofia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 79,
+      "titulo": "O impacto dos meios de comunicação",
+      "descricao": "Analisar o impacto e a influência dos meios de comunicação na cultura, na política e no comportamento social.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 1994,
+      "area": "Comunicação/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 81,
+      "titulo": "Mito e razão",
+      "descricao": "Dissertar sobre a relação entre mito e razão como formas distintas de conhecimento e explicação do mundo.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 1996,
+      "area": "Filosofia/Antropologia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 82,
+      "titulo": "Escrita",
+      "descricao": "Refletir sobre a importância da escrita, suas funções (comunicação, registro, expressão) e seu poder transformador.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 1997,
+      "area": "Linguagem/Cultura",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 83,
+      "titulo": "Convívio social",
+      "descricao": "Dissertar sobre os desafios, as regras e a importância do bom convívio social para a harmonia e o bem-estar coletivo.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 1998,
+      "area": "Sociedade/Sociologia",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 85,
+      "titulo": "Uso de estrangeirismos",
+      "descricao": "Debater sobre o uso de palavras estrangeiras na língua portuguesa, ponderando os argumentos a favor e contra essa prática.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2000,
+      "area": "Linguagem/Cultura",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 86,
+      "titulo": "Crescimento do neonazismo e do neofascismo",
+      "descricao": "Analisar as causas e os perigos do ressurgimento de ideologias de extrema-direita como o neonazismo e o neofascismo no mundo.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2001,
+      "area": "Política/História",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 88,
+      "titulo": "Autoestima entre os brasileiros",
+      "descricao": "Dissertar sobre a questão da autoestima do povo brasileiro, analisando fatores históricos e sociais que a influenciam.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2003,
+      "area": "Sociedade/Psicologia",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 89,
+      "titulo": "Concepções do tempo",
+      "descricao": "Refletir sobre as diferentes maneiras de conceber e vivenciar o tempo (cronológico, psicológico, histórico) na experiência humana.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2004,
+      "area": "Filosofia/Sociedade",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 90,
+      "titulo": "A descatracalização da vida",
+      "descricao": "Analisar a metáfora da 'descatracalização da vida', discutindo a superação de barreiras e a busca por maior liberdade e fluidez nas relações sociais.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2005,
+      "area": "Sociedade/Filosofia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 91,
+      "titulo": "Trabalho",
+      "descricao": "Dissertar sobre o significado e a centralidade do trabalho na vida do ser humano e na organização da sociedade.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2006,
+      "area": "Trabalho/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 92,
+      "titulo": "Amizade",
+      "descricao": "Refletir sobre o valor, a natureza e a importância dos laços de amizade nas relações humanas.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2007,
+      "area": "Sociedade/Filosofia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 93,
+      "titulo": "Tecnologia e acesso à informação",
+      "descricao": "Discutir como a tecnologia tem transformado o acesso à informação e quais os benefícios e desafios decorrentes desse processo.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2008,
+      "area": "Tecnologia/Comunicação",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 94,
+      "titulo": "Fronteiras",
+      "descricao": "Dissertar sobre o conceito de 'fronteiras', tanto em seu sentido geográfico e político quanto em suas dimensões simbólicas e culturais.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2009,
+      "area": "Geopolítica/Filosofia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 95,
+      "titulo": "Imagens e símbolos",
+      "descricao": "Analisar o papel e o poder das imagens e dos símbolos na comunicação, na cultura e na construção de significados.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2010,
+      "area": "Comunicação/Cultura",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 96,
+      "titulo": "O altruísmo e o pensamento a longo prazo ainda têm lugar no mundo contemporâneo?",
+      "descricao": "Debater se, em um mundo marcado pelo individualismo e imediatismo, o altruísmo e o planejamento a longo prazo ainda são valores possíveis e relevantes.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2011,
+      "area": "Sociedade/Filosofia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 97,
+      "titulo": "Participação política: indispensável ou superada?",
+      "descricao": "Discutir a relevância da participação política na contemporaneidade, questionando se ela continua sendo um pilar da democracia ou se tornou uma prática superada.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2012,
+      "area": "Política/Cidadania",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 98,
+      "titulo": "Consumismo",
+      "descricao": "A partir de uma perspectiva crítica, analisar a sociedade de consumo, suas causas e seus impactos no indivíduo e no meio ambiente.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2013,
+      "area": "Sociedade/Economia",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 99,
+      "titulo": "Envelhecimento populacional",
+      "descricao": "Analisar os desafios sociais, econômicos e de saúde decorrentes do processo de envelhecimento da população brasileira e mundial.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2014,
+      "area": "Sociedade/Demografia",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 100,
+      "titulo": "“Camarotização” da sociedade brasileira: a segregação das classes sociais e a democracia",
+      "descricao": "Discutir o fenômeno da 'camarotização', ou seja, a crescente segregação espacial e social das classes no Brasil e seus impactos para a democracia.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2015,
+      "area": "Sociedade/Política",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 101,
+      "titulo": "As utopias: indispensáveis, inúteis ou nocivas?",
+      "descricao": "Debater o papel das utopias (projetos de uma sociedade ideal), questionando se elas são essenciais para o progresso, meramente inúteis ou até mesmo perigosas.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2016,
+      "area": "Filosofia/Política",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 102,
+      "titulo": "O homem saiu de sua menoridade?",
+      "descricao": "Retomando a questão de Kant, discutir se o homem contemporâneo alcançou a 'maioridade', ou seja, a capacidade de pensar por si mesmo sem a tutela de outros.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2017,
+      "area": "Filosofia/Sociedade",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 103,
+      "titulo": "Devem existir limites para a arte?",
+      "descricao": "Debater a complexa questão da liberdade de expressão na arte, ponderando se devem ou não existir limites para a produção artística.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2018,
+      "area": "Arte/Filosofia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 104,
+      "titulo": "De que maneira o passado contribui para a compreensão do presente?",
+      "descricao": "Refletir sobre a importância da memória e do conhecimento histórico para a interpretação e a compreensão dos desafios e das características do mundo atual.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2019,
+      "area": "História/Filosofia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 105,
+      "titulo": "O papel da ciência no mundo contemporâneo",
+      "descricao": "Discutir a importância, a função e os desafios da ciência na sociedade contemporânea, abordando sua relação com a política, a economia e a cultura.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2020,
+      "area": "Ciência/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 106,
+      "titulo": "O mundo contemporâneo está fora da ordem?",
+      "descricao": "Analisar o cenário global contemporâneo, discutindo se as crises (políticas, sociais, ambientais, sanitárias) representam um estado de desordem mundial.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2021,
+      "area": "Sociedade/Geopolítica",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 107,
+      "titulo": "As diferentes faces do riso",
+      "descricao": "Explorar as múltiplas funções e significados do riso, desde o humor e a alegria até a crítica social, o deboche e o nervosismo.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2022,
+      "area": "Cultura/Psicologia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 108,
+      "titulo": "Refugiados ambientais e vulnerabilidade social",
+      "descricao": "Discutir a emergência da figura dos refugiados ambientais (ou climáticos) e a situação de vulnerabilidade social enfrentada por essas populações.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2023,
+      "area": "Meio Ambiente/Direitos Humanos",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 109,
+      "titulo": "Educação básica e formação profissional: entre a multitarefa e a reflexão",
+      "descricao": "Debater os dilemas da educação atual, dividida entre a necessidade de preparar para um mundo multitarefa e a importância de promover o pensamento crítico e a reflexão.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2024,
+      "area": "Educação/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 110,
+      "titulo": "As relações sociais por meio da solidariedade",
+      "descricao": "Dissertar sobre o papel da solidariedade na construção e manutenção das relações sociais, contrastando com o individualismo.",
+      "faculdade": "FUVEST",
+      "estilo": "Dissertativo",
+      "ano": 2025,
+      "area": "Sociedade/Filosofia",
+      "dificuldade": "filosófico"
+    }
+  ],
+  "estilos": [
+    {
+      "nome": "Dissertativo-Argumentativo",
+      "descricao": "Texto que apresenta uma tese e a defende com argumentos consistentes.",
+      "caracteristicas": [
+        "argumentação",
+        "persuasão",
+        "estrutura lógica",
+        "fundamentação"
+      ]
+    },
+    {
+      "nome": "Dissertativo",
+      "descricao": "Texto que expõe ideias sobre um determinado assunto, sem a necessidade obrigatória de defender uma tese específica, focando mais na reflexão e exploração do tema.",
+      "caracteristicas": [
+        "exposição de ideias",
+        "reflexão",
+        "conceituação",
+        "análise"
+      ]
+    }
+  ],
+  "areas": [
+    "Arte/Filosofia",
+    "Cidadania/Filosofia",
+    "Ciência/Sociedade",
+    "Comunicação/Cultura",
+    "Comunicação/Sociedade",
+    "Cultura/Psicologia",
+    "Educação/Política",
+    "Educação/Sociedade",
+    "Filosofia",
+    "Filosofia/Antropologia",
+    "Filosofia/Política",
+    "Filosofia/Sociedade",
+    "Geopolítica/Filosofia",
+    "História/Filosofia",
+    "Linguagem/Cultura",
+    "Meio Ambiente/Direitos Humanos",
+    "Política/Cidadania",
+    "Política/História",
+    "Sociedade/Demografia",
+    "Sociedade/Economia",
+    "Sociedade/Filosofia",
+    "Sociedade/Geopolítica",
+    "Sociedade/Literatura",
+    "Sociedade/Política",
+    "Sociedade/Psicologia",
+    "Sociedade/Sociologia",
+    "Sociologia/Filosofia",
+    "Tecnologia/Comunicação",
+    "Trabalho/Sociedade"
+  ]
+}

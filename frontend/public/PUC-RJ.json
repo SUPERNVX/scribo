@@ -1,0 +1,193 @@
+{
+  "temas": [
+    {
+      "id": 146,
+      "titulo": "Mulher no mercado de trabalho",
+      "descricao": "Analisar a participação da mulher no mercado de trabalho, discutindo os avanços, os desafios e as desigualdades persistentes.",
+      "faculdade": "PUC-RJ",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2009,
+      "area": "Trabalho/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 147,
+      "titulo": "Ciúmes",
+      "descricao": "Dissertar sobre o sentimento do ciúme, explorando suas dimensões psicológicas, sociais e culturais.",
+      "faculdade": "PUC-RJ",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2010,
+      "area": "Psicologia/Sociedade",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 148,
+      "titulo": "Herança Humana",
+      "descricao": "Refletir sobre o conceito de 'herança humana', abrangendo tanto o legado cultural e histórico quanto o patrimônio genético.",
+      "faculdade": "PUC-RJ",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2011,
+      "area": "Filosofia/Cultura",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 149,
+      "titulo": "Tabus e preconceitos alimentares",
+      "descricao": "Discutir a existência de tabus e preconceitos relacionados à alimentação, analisando suas origens culturais e sociais.",
+      "faculdade": "PUC-RJ",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2012,
+      "area": "Cultura/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 150,
+      "titulo": "A loucura",
+      "descricao": "Dissertar sobre o conceito de loucura, abordando suas diferentes interpretações ao longo da história e o estigma social associado.",
+      "faculdade": "PUC-RJ",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2013,
+      "area": "Saúde/Filosofia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 151,
+      "titulo": "Felicidade",
+      "descricao": "Refletir sobre a busca pela felicidade, discutindo suas diferentes concepções filosóficas e as pressões sociais contemporâneas.",
+      "faculdade": "PUC-RJ",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2014,
+      "area": "Filosofia/Psicologia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 152,
+      "titulo": "Poder da imaginação",
+      "descricao": "Dissertar sobre o poder da imaginação como força criativa, motor de inovações e ferramenta para a transformação da realidade.",
+      "faculdade": "PUC-RJ",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2015,
+      "area": "Filosofia/Arte",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 153,
+      "titulo": "Ética",
+      "descricao": "Refletir sobre a importância da ética nas ações individuais e coletivas para a construção de uma sociedade mais justa.",
+      "faculdade": "PUC-RJ",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2016,
+      "area": "Ética/Filosofia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 155,
+      "titulo": "A necessidade humana de viver transformações",
+      "descricao": "A partir de textos de apoio, dissertar sobre a necessidade do ser humano de buscar e viver transformações e de mudar o mundo a sua volta.",
+      "faculdade": "PUC-RJ",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2017,
+      "area": "Filosofia/Sociedade",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 156,
+      "titulo": "Geração Ultrajovem",
+      "descricao": "Analisar as características, comportamentos e desafios da chamada 'Geração Ultrajovem' (geração Z).",
+      "faculdade": "PUC-RJ",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2019,
+      "area": "Sociedade/Juventude",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 157,
+      "titulo": "Direitos Humanos",
+      "descricao": "Dissertar sobre a importância e os desafios para a efetivação dos Direitos Humanos no mundo contemporâneo.",
+      "faculdade": "PUC-RJ",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2020,
+      "area": "Direitos Humanos",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 158,
+      "titulo": "Solidariedade",
+      "descricao": "Refletir sobre o papel da solidariedade como valor fundamental para a coesão social e o enfrentamento de crises coletivas.",
+      "faculdade": "PUC-RJ",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2021,
+      "area": "Sociedade/Filosofia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 159,
+      "titulo": "Exclusão Social",
+      "descricao": "Analisar as causas e consequências da exclusão social e discutir caminhos para promover uma sociedade mais inclusiva.",
+      "faculdade": "PUC-RJ",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2021,
+      "area": "Sociedade/Direitos Humanos",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 160,
+      "titulo": "Sobre a Vida",
+      "descricao": "Desenvolver uma reflexão filosófica e existencial sobre o sentido e o valor da vida.",
+      "faculdade": "PUC-RJ",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2022,
+      "area": "Filosofia",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 187,
+      "titulo": "Apresentar concepções sobre o Brasil",
+      "descricao": "Dissertar sobre o Brasil, suas características, desafios e potencialidades.",
+      "faculdade": "PUC-RJ",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2018,
+      "area": "Sociedade/Cultura",
+      "dificuldade": "avançado"
+    }
+  ],
+  "estilos": [
+    {
+      "nome": "Dissertativo-Argumentativo",
+      "descricao": "Texto que apresenta uma tese e a defende com argumentos consistentes.",
+      "caracteristicas": [
+        "argumentação",
+        "persuasão",
+        "estrutura lógica",
+        "fundamentação"
+      ]
+    },
+    {
+      "nome": "Dissertativo",
+      "descricao": "Texto que expõe ideias sobre um determinado assunto, sem a necessidade obrigatória de defender uma tese específica, focando mais na reflexão e exploração do tema.",
+      "caracteristicas": [
+        "exposição de ideias",
+        "reflexão",
+        "conceituação",
+        "análise"
+      ]
+    }
+  ],
+  "areas": [
+    "Cultura/Sociedade",
+    "Direitos Humanos",
+    "Ética/Filosofia",
+    "Filosofia",
+    "Filosofia/Arte",
+    "Filosofia/Cultura",
+    "Filosofia/Psicologia",
+    "Filosofia/Sociedade",
+    "Psicologia/Sociedade",
+    "Saúde/Filosofia",
+    "Sociedade/Cultura",
+    "Sociedade/Direitos Humanos",
+    "Sociedade/Filosofia",
+    "Sociedade/Juventude",
+    "Trabalho/Sociedade"
+  ]
+}

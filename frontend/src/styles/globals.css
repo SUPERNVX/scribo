@@ -1,0 +1,486 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import accessibility styles */
+@import './accessibility.css';
+
+/* Import responsive styles */
+@import './responsive.css';
+
+/* Importar fontes do Google */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Reset e configurações base */
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply m-0 p-0 font-body antialiased;
+    @apply bg-pastel-gradient text-soft-gray-900;
+    @apply transition-all duration-300 ease-in-out;
+    min-height: 100vh;
+  }
+
+  /* Modo escuro refinado */
+  .dark body {
+    @apply bg-pastel-gradient-dark text-dark-text-primary;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  /* Scrollbar personalizada */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-white/20 rounded-full;
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    @apply bg-dark-bg-secondary/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-pastel-purple-400/30 rounded-full;
+    @apply hover:bg-pastel-purple-400/50;
+    @apply transition-colors duration-200;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-dark-accent-purple/40 rounded-full;
+    @apply hover:bg-dark-accent-purple/60;
+  }
+}
+
+/* Componentes reutilizáveis */
+@layer components {
+  /* Botões */
+  .btn-primary {
+    @apply px-6 py-3 rounded-2xl font-semibold;
+    @apply bg-button-gradient text-white;
+    @apply shadow-pastel hover:shadow-pastel-lg;
+    @apply transform hover:scale-105 hover:-translate-y-1;
+    @apply transition-all duration-300 ease-out;
+    @apply border-0 cursor-pointer;
+  }
+
+  .dark .btn-primary {
+    @apply bg-button-gradient-dark text-white;
+    @apply shadow-dark-soft hover:shadow-dark-soft-lg;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-2xl font-semibold;
+    @apply bg-white/40 text-pastel-purple-800;
+    @apply border-2 border-pastel-purple-200;
+    @apply backdrop-blur-sm;
+    @apply hover:bg-pastel-purple-100/50 hover:border-pastel-purple-300;
+    @apply transform hover:scale-105;
+    @apply transition-all duration-300 ease-out;
+    @apply cursor-pointer;
+  }
+
+  .dark .btn-secondary {
+    @apply bg-dark-bg-glass/40 text-dark-accent-purple;
+    @apply border-2 border-dark-border-primary;
+    @apply hover:bg-dark-bg-glass/60 hover:border-dark-border-accent;
+  }
+
+  .btn-ghost {
+    @apply px-4 py-2 rounded-xl font-medium;
+    @apply bg-transparent text-pastel-purple-800;
+    @apply hover:bg-pastel-purple-100/50;
+    @apply transition-all duration-200 ease-out;
+    @apply cursor-pointer border-0;
+  }
+
+  .dark .btn-ghost {
+    @apply text-dark-accent-purple;
+    @apply hover:bg-dark-bg-glass/30;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white/40 backdrop-blur-md;
+    @apply border border-pastel-purple-200/30;
+    @apply rounded-2xl p-6;
+    @apply shadow-soft hover:shadow-soft-lg;
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-interactive {
+    @apply card cursor-pointer;
+    @apply hover:bg-white/60 hover:border-pastel-purple-300/50;
+    @apply hover:-translate-y-1 hover:scale-[1.02];
+  }
+
+  /* Modo escuro refinado para cards */
+  .dark .card {
+    @apply bg-card-gradient-dark backdrop-blur-md;
+    @apply border border-dark-border-primary;
+    @apply shadow-dark-soft hover:shadow-dark-soft-lg;
+  }
+
+  .dark .card-interactive {
+    @apply hover:bg-dark-bg-glass/60 hover:border-dark-border-accent;
+  }
+
+  /* Inputs */
+  .input {
+    @apply w-full px-4 py-3 rounded-xl;
+    @apply bg-white/50 border border-pastel-purple-200;
+    @apply backdrop-blur-sm;
+    @apply focus:outline-none focus:ring-2 focus:ring-pastel-purple-400/50;
+    @apply focus:border-pastel-purple-400;
+    @apply transition-all duration-200 ease-out;
+    @apply placeholder-soft-gray-400;
+  }
+
+  .dark .input {
+    @apply bg-dark-bg-glass/50 border-dark-border-primary;
+    @apply text-dark-text-primary placeholder-dark-text-muted;
+    @apply focus:ring-dark-accent-purple/50 focus:border-dark-accent-purple;
+  }
+
+  /* Textarea */
+  .textarea {
+    @apply input resize-none min-h-[120px];
+  }
+
+  /* Headers */
+  .header {
+    @apply bg-white/30 backdrop-blur-md;
+    @apply border-b border-pastel-purple-200/30;
+    @apply sticky top-0 z-50;
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .dark .header {
+    @apply bg-soft-gray-900/30 border-pastel-purple-400/20;
+  }
+
+  /* Navigation */
+  .nav-btn {
+    @apply px-4 py-2 rounded-xl font-medium;
+    @apply text-black hover:text-pastel-purple-custom;
+    @apply hover:bg-pastel-purple-100/50;
+    @apply transition-all duration-200 ease-out;
+    @apply cursor-pointer border-0 bg-transparent;
+  }
+
+  .nav-btn.active {
+    @apply text-white bg-gradient-to-r from-pastel-purple-custom to-pastel-purple-400;
+  }
+
+  .dark .nav-btn {
+    @apply text-black hover:text-pastel-purple-custom;
+    @apply hover:bg-pastel-purple-400/20;
+  }
+
+  .dark .nav-btn.active {
+    @apply text-white bg-gradient-to-r from-pastel-purple-custom to-pastel-purple-400;
+  }
+
+  /* Loading states */
+  .loading-spinner {
+    @apply flex flex-col items-center justify-center gap-4;
+  }
+
+  .spinner {
+    @apply w-8 h-8 border-4 border-pastel-purple-200;
+    @apply border-t-pastel-purple-500 rounded-full;
+    @apply animate-spin;
+  }
+
+  /* Modais */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/50 backdrop-blur-sm;
+    @apply flex items-center justify-center p-4;
+    @apply z-50;
+  }
+
+  .modal-content {
+    @apply bg-white/95 backdrop-blur-md;
+    @apply rounded-2xl p-6 max-w-md w-full;
+    @apply shadow-pastel-xl;
+    @apply border border-pastel-purple-200/50;
+  }
+
+  .dark .modal-content {
+    @apply bg-soft-gray-800/95 border-pastel-purple-400/30;
+  }
+
+  /* Gradientes de texto */
+  .gradient-text {
+    @apply text-pastel-purple-custom;
+    @apply font-bold;
+  }
+
+  .dark .gradient-text {
+    @apply text-dark-accent-purple;
+  }
+
+  /* Animações personalizadas */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+}
+
+/* Animações customizadas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Utilitários específicos */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .backdrop-blur-strong {
+    backdrop-filter: blur(20px);
+  }
+
+  .glass-effect {
+    @apply bg-white/20 backdrop-blur-md border border-white/30;
+  }
+
+  .dark .glass-effect {
+    @apply bg-soft-gray-800/20 border-pastel-purple-400/20;
+  }
+}
+
+/* Responsividade melhorada */
+@media (max-width: 768px) {
+  .card {
+    @apply p-4 rounded-xl;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .modal-content {
+    @apply p-4 mx-2;
+  }
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus states melhorados */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  @apply outline-2 outline-offset-2 outline-pastel-purple-500;
+}
+
+.dark button:focus-visible,
+.dark input:focus-visible,
+.dark textarea:focus-visible {
+  @apply outline-dark-accent-purple;
+}
+
+/* ===== MODO ESCURO REFINADO ===== */
+/* Sistema completo de cores pastel para modo escuro */
+
+.dark {
+  /* Textos refinados */
+  color: theme('colors.dark.text.primary');
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  @apply text-dark-text-primary;
+}
+
+.dark p {
+  @apply text-dark-text-secondary;
+}
+
+.dark .text-muted {
+  @apply text-dark-text-muted;
+}
+
+/* Componentes específicos do modo escuro */
+.dark .glass-effect {
+  @apply bg-glass-dark backdrop-blur-xl;
+  @apply border border-dark-border-primary;
+  @apply shadow-dark-soft;
+}
+
+.dark .nav-btn {
+  @apply bg-dark-bg-glass/30 text-dark-text-secondary;
+  @apply border border-dark-border-primary;
+  @apply hover:bg-dark-bg-glass/50 hover:text-dark-text-primary;
+  @apply hover:border-dark-border-accent;
+}
+
+.dark .nav-btn.active {
+  @apply bg-dark-accent-purple/20 text-dark-accent-purple;
+  @apply border-dark-accent-purple/50;
+}
+
+/* Modal refinado para modo escuro */
+.dark .modal-content {
+  @apply bg-dark-bg-card/95 backdrop-blur-xl;
+  @apply border border-dark-border-secondary;
+  @apply shadow-dark-soft-lg;
+}
+
+/* Estados hover refinados */
+.dark .hover-lift:hover {
+  @apply transform -translate-y-1 scale-[1.02];
+  @apply shadow-dark-soft-lg;
+}
+
+/* Bordas e divisores */
+.dark .border-divider {
+  @apply border-dark-border-primary;
+}
+
+.dark .border-accent {
+  @apply border-dark-border-accent;
+}
+
+/* Backgrounds especiais */
+.dark .bg-surface {
+  @apply bg-dark-bg-secondary;
+}
+
+.dark .bg-elevated {
+  @apply bg-dark-bg-tertiary;
+}
+
+/* Efeitos de glassmorphism refinados */
+.dark .glass-card {
+  @apply bg-dark-bg-glass/40 backdrop-blur-xl;
+  @apply border border-dark-border-primary/50;
+  @apply shadow-dark-soft;
+}
+
+.dark .glass-card:hover {
+  @apply bg-dark-bg-glass/60;
+  @apply border-dark-border-accent/50;
+  @apply shadow-dark-soft-lg;
+}
+
+/* Acentos coloridos para modo escuro */
+.dark .accent-purple {
+  @apply text-dark-accent-purple;
+}
+.dark .accent-pink {
+  @apply text-dark-accent-pink;
+}
+.dark .accent-blue {
+  @apply text-dark-accent-blue;
+}
+.dark .accent-green {
+  @apply text-dark-accent-green;
+}
+.dark .accent-orange {
+  @apply text-dark-accent-orange;
+}
+.dark .accent-yellow {
+  @apply text-dark-accent-yellow;
+}
+
+/* Backgrounds com acentos */
+.dark .bg-accent-purple {
+  @apply bg-dark-accent-purple/10;
+}
+.dark .bg-accent-pink {
+  @apply bg-dark-accent-pink/10;
+}
+.dark .bg-accent-blue {
+  @apply bg-dark-accent-blue/10;
+}
+.dark .bg-accent-green {
+  @apply bg-dark-accent-green/10;
+}
+.dark .bg-accent-orange {
+  @apply bg-dark-accent-orange/10;
+}
+.dark .bg-accent-yellow {
+  @apply bg-dark-accent-yellow/10;
+}
+
+/* Transições suaves para mudança de tema */
+* {
+  @apply transition-colors duration-300 ease-in-out;
+}
+
+/* Melhorias de contraste para acessibilidade */
+.dark .high-contrast {
+  @apply text-dark-text-primary bg-dark-bg-primary;
+}
+
+.dark .medium-contrast {
+  @apply text-dark-text-secondary bg-dark-bg-secondary;
+}
+
+.dark .low-contrast {
+  @apply text-dark-text-tertiary bg-dark-bg-tertiary;
+}

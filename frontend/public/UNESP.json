@@ -1,0 +1,204 @@
+{
+"temas": [
+{
+"id": 161,
+"titulo": "A importância da ética no mundo do trabalho",
+"descricao": "Discutir a relevância dos princípios éticos nas relações profissionais e no ambiente de trabalho.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2000,
+"area": "Trabalho/Ética",
+"dificuldade": "convencional"
+},
+{
+"id": 162,
+"titulo": "A importância da informação na sociedade contemporânea",
+"descricao": "Analisar o papel central da informação na era digital e seus impactos na sociedade.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2001,
+"area": "Comunicação/Sociedade",
+"dificuldade": "convencional"
+},
+{
+"id": 163,
+"titulo": "A importância da educação para o combate à violência",
+"descricao": "Argumentar sobre como a educação pode ser uma ferramenta fundamental para prevenir e combater a violência.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2002,
+"area": "Educação/Violência",
+"dificuldade": "convencional"
+},
+{
+"id": 164,
+"titulo": "Liberdade: direito ou concessão?",
+"descricao": "Refletir sobre a natureza da liberdade, questionando se ela é um direito inalienável ou uma concessão social.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2003,
+"area": "Filosofia/Direitos",
+"dificuldade": "filosófico"
+},
+{
+"id": 165,
+"titulo": "Mídia e democracia",
+"descricao": "Analisar a relação entre os meios de comunicação e o sistema democrático, considerando influências e responsabilidades.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2004,
+"area": "Comunicação/Política",
+"dificuldade": "convencional"
+},
+{
+"id": 166,
+"titulo": "Trabalho: fator de realização ou alienação humana?",
+"descricao": "Discutir as diferentes dimensões do trabalho na vida humana, considerando aspectos de realização pessoal e alienação.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2005,
+"area": "Trabalho/Filosofia",
+"dificuldade": "filosófico"
+},
+{
+"id": 167,
+"titulo": "Ciência e tecnologia: benefícios e riscos para a humanidade",
+"descricao": "Avaliar os impactos positivos e negativos do desenvolvimento científico e tecnológico para a sociedade.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2006,
+"area": "Ciência/Tecnologia",
+"dificuldade": "convencional"
+},
+{
+"id": 168,
+"titulo": "A importância da preservação da memória histórica",
+"descricao": "Argumentar sobre a relevância de preservar a memória histórica para a identidade cultural e social.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2007,
+"area": "História/Cultura",
+"dificuldade": "convencional"
+},
+{
+"id": 169,
+"titulo": "Globalização: integração ou homogeneização cultural?",
+"descricao": "Analisar os efeitos da globalização sobre as culturas locais e a diversidade cultural mundial.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2008,
+"area": "Globalização/Cultura",
+"dificuldade": "convencional"
+},
+{
+"id": 170,
+"titulo": "O papel da arte na transformação social",
+"descricao": "Discutir como a arte pode contribuir para mudanças sociais e conscientização política.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2009,
+"area": "Arte/Sociedade",
+"dificuldade": "convencional"
+},
+{
+"id": 171,
+"titulo": "Sustentabilidade: responsabilidade de quem?",
+"descricao": "Analisar as responsabilidades individuais, corporativas e governamentais na promoção da sustentabilidade ambiental.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2010,
+"area": "Meio Ambiente",
+"dificuldade": "convencional"
+},
+{
+"id": 172,
+"titulo": "Redes sociais: aproximação ou isolamento?",
+"descricao": "Avaliar os impactos das redes sociais nas relações humanas e na comunicação interpessoal.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2011,
+"area": "Tecnologia/Sociedade",
+"dificuldade": "convencional"
+},
+{
+"id": 173,
+"titulo": "O futuro do planeta: uma responsabilidade de todos",
+"descricao": "Discutir a responsabilidade coletiva na preservação do meio ambiente para as futuras gerações.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2012,
+"area": "Meio Ambiente",
+"dificuldade": "convencional"
+},
+{
+"id": 174,
+"titulo": "Mobilidade urbana: direito de ir e vir",
+"descricao": "Analisar os desafios da mobilidade urbana e o direito fundamental de locomoção nas cidades.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2013,
+"area": "Urbanismo/Direitos",
+"dificuldade": "convencional"
+},
+{
+"id": 175,
+"titulo": "Consumismo: liberdade ou escravidão?",
+"descricao": "Refletir sobre a cultura do consumo na sociedade contemporânea e seus impactos na liberdade individual.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2014,
+"area": "Sociedade/Economia",
+"dificuldade": "filosófico"
+},
+{
+"id": 176,
+"titulo": "Juventude e política: participação e transformação",
+"descricao": "Discutir o papel dos jovens na política e sua capacidade de promover transformações sociais.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2015,
+"area": "Política/Juventude",
+"dificuldade": "convencional"
+},
+{
+"id": 177,
+"titulo": "Diversidade cultural: riqueza ou conflito?",
+"descricao": "Analisar como a diversidade cultural pode ser fonte de enriquecimento ou de tensões sociais.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2016,
+"area": "Cultura/Sociedade",
+"dificuldade": "convencional"
+},
+{
+"id": 178,
+"titulo": "Fake news: a pós-verdade em questão",
+"descricao": "Examinar o fenômeno das notícias falsas e seus impactos na formação da opinião pública.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2017,
+"area": "Comunicação/Sociedade",
+"dificuldade": "convencional"
+},
+{
+"id": 179,
+"titulo": "Inteligência artificial: progresso ou ameaça?",
+"descricao": "Avaliar os benefícios e riscos do desenvolvimento da inteligência artificial para a humanidade.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2018,
+"area": "Tecnologia/Futuro",
+"dificuldade": "convencional"
+},
+{
+"id": 180,
+"titulo": "O papel da ciência no desenvolvimento sustentável do Brasil",
+"descricao": "Argumentar sobre como o investimento em ciência e tecnologia é crucial para o desenvolvimento social e econômico do Brasil, gerando inovação e bem-estar.",
+"faculdade": "UNESP",
+"estilo": "Dissertativo-Argumentativo",
+"ano": 2019,
+"area": "Ciência/Desenvolvimento",
+"dificuldade": "convencional"
+}
+]
+}

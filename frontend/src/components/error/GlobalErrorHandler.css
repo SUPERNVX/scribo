@@ -1,0 +1,60 @@
+/* Global Error Styles */
+.error-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.error-highlight {
+  animation: highlight 2s ease-in-out;
+}
+
+@keyframes highlight {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(239, 68, 68, 0.1);
+  }
+}
+
+.connection-pulse {
+  animation: connection-pulse 2s infinite;
+}
+
+@keyframes connection-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.slide-in-down {
+  animation: slide-in-down 0.3s ease-out;
+}
+
+@keyframes slide-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

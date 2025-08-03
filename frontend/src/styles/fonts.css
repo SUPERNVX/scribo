@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Glacial Indifference';
+  src: url('../assets/fonts/glacial-indifference/GlacialIndifference-Regular.otf')
+    format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Glacial Indifference';
+  src: url('../assets/fonts/glacial-indifference/GlacialIndifference-Bold.otf')
+    format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Milky Walky';
+  src: url('../assets/fonts/milky_walky/MilkyWalky-Regular.otf')
+    format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Simonetta:ital,wght@0,400;0,900;1,400;1,900&display=swap');

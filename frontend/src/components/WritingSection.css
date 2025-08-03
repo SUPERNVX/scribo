@@ -1,0 +1,796 @@
+/* WritingSection Styles - Following Design System */
+
+.writing-section {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffe5b4 0%, #ffeaa7 50%, #dda0dd 100%);
+  padding: 2rem 0;
+}
+
+.writing-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header */
+.writing-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.writing-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #343a40;
+  margin-bottom: 1rem;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+}
+
+.writing-title-enhanced {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #343a40;
+  margin-bottom: 1.5rem;
+  font-family: 'Simonetta', cursive;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+.writing-subtitle-enhanced {
+  font-size: 1.25rem;
+  color: #6c757d;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #8b7ed8 0%, #6b5fcf 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.writing-subtitle {
+  font-size: 1rem;
+  color: #6c757d;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+
+/* AI Model Selector */
+.ai-model-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: white;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.model-label {
+  font-weight: 600;
+  color: #343a40;
+  font-size: 0.875rem;
+}
+
+.model-select {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border: 2px solid #e9ecef;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #343a40;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.model-select:focus {
+  border-color: #8b7ed8;
+  box-shadow: 0 0 0 3px rgba(139, 126, 216, 0.1);
+}
+
+.model-select:hover {
+  border-color: #8b7ed8;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #343a40;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Theme Selection */
+.theme-selection-section {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.theme-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border: 2px solid #e9ecef;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.theme-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-color: #8b7ed8;
+}
+
+.theme-card.selected {
+  border-color: #8b7ed8;
+  background: linear-gradient(135deg, #e8e2ff 0%, #f3f0ff 100%);
+  box-shadow: 0 4px 16px rgba(139, 126, 216, 0.2);
+}
+
+/* Faculty Theme Selector Styles */
+.faculty-theme-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border: 2px solid #cbd5e1;
+}
+
+.faculty-theme-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.faculty-theme-card:hover::before {
+  left: 100%;
+}
+
+.faculty-theme-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.2);
+  border-color: #3b82f6;
+}
+
+.faculty-theme-card.selected {
+  border-color: #3b82f6;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.25);
+}
+
+.faculty-theme-card .theme-icon {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+}
+
+.theme-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.theme-icon {
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #8b7ed8 0%, #6b5fcf 100%);
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-meta {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.theme-year,
+.theme-type {
+  background: #ffb088;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.theme-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #343a40;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.theme-description {
+  font-size: 0.875rem;
+  color: #6c757d;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.theme-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.theme-tag {
+  background: #81c784;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Editor Section */
+.editor-section {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.editor-header {
+  margin-bottom: 1.5rem;
+}
+
+.selected-theme-info {
+  background: linear-gradient(135deg, #e8e2ff 0%, #f3f0ff 100%);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin-top: 1rem;
+  border-left: 4px solid #8b7ed8;
+  text-align: left;
+}
+
+.info-label {
+  font-weight: 500;
+  color: #6c757d;
+  margin-right: 0.5rem;
+}
+
+.info-value {
+  font-weight: 600;
+  color: #343a40;
+}
+
+.editor-container {
+  border: 2px solid #e9ecef;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: white;
+}
+
+.editor-toolbar {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.toolbar-left {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.word-count,
+.char-count {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.count-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #8b7ed8;
+}
+
+.count-label {
+  font-size: 0.75rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.writing-tips {
+  font-size: 0.875rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.editor-wrapper {
+  position: relative;
+}
+
+.essay-editor {
+  width: 100%;
+  min-height: 500px;
+  padding: 2rem;
+  border: none;
+  font-size: 1rem;
+  line-height: 1.8;
+  resize: vertical;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  background: white;
+  color: #343a40;
+  outline: none;
+}
+
+.essay-editor::placeholder {
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+.essay-editor:focus {
+  background: linear-gradient(135deg, #fefefe 0%, #f8f9fa 100%);
+}
+
+.editor-footer {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  border-top: 1px solid #e9ecef;
+  min-height: 80px;
+}
+
+.footer-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.progress-bar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.progress-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6c757d;
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+.progress-track {
+  width: 100%;
+  height: 0.5rem;
+  background: #e9ecef;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #81c784 0%, #66bb6a 100%);
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.75rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.footer-right {
+  flex-shrink: 0;
+}
+
+.submit-button {
+  background: linear-gradient(135deg, #8b7ed8 0%, #6b5fcf 100%);
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(139, 126, 216, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(139, 126, 216, 0.4);
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.loading-spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Writing Tips Section */
+.writing-tips-section {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.tip-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border: 1px solid #e9ecef;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tip-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-color: #8b7ed8;
+}
+
+.tip-card:nth-child(1) {
+  background: linear-gradient(135deg, #e8e2ff 0%, #f3f0ff 100%);
+}
+.tip-card:nth-child(2) {
+  background: linear-gradient(135deg, #ffe5d4 0%, #fff2e8 100%);
+}
+.tip-card:nth-child(3) {
+  background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
+}
+.tip-card:nth-child(4) {
+  background: linear-gradient(135deg, #fff3e0 0%, #fff8e1 100%);
+}
+
+.tip-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.tip-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #343a40;
+  margin-bottom: 0.5rem;
+}
+
+.tip-description {
+  font-size: 0.875rem;
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .themes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .writing-container {
+    padding: 0 1rem;
+  }
+
+  .writing-title {
+    font-size: 2rem;
+  }
+
+  .ai-model-selector {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .themes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .editor-toolbar {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .toolbar-left {
+    gap: 1rem;
+  }
+
+  .editor-footer {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .writing-section {
+    padding: 1rem 0;
+  }
+
+  .theme-selection-section,
+  .editor-section,
+  .writing-tips-section {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .writing-title {
+    font-size: 1.75rem;
+  }
+
+  .essay-editor {
+    min-height: 400px;
+    padding: 1.5rem;
+  }
+
+  .submit-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Focus Mode Styles */
+.writing-section.focus-mode {
+  background: #1a1a1a;
+  min-height: 100vh;
+  padding: 0;
+}
+
+.writing-section.focus-mode .writing-container {
+  max-width: 100%;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.writing-section.focus-mode .editor-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.writing-section.focus-mode .editor-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #1a1a1a;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.writing-section.focus-mode .editor-header {
+  background: #2d2d2d;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #404040;
+}
+
+.writing-section.focus-mode .editor-header-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.writing-section.focus-mode .editor-toolbar.focus-mode {
+  background: #2d2d2d;
+  padding: 0.75rem 2rem;
+  border-bottom: 1px solid #404040;
+  justify-content: space-between;
+}
+
+.writing-section.focus-mode .editor-toolbar .toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.writing-section.focus-mode .word-count,
+.writing-section.focus-mode .char-count {
+  color: #e0e0e0;
+}
+
+.writing-section.focus-mode .focus-mode-info {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  margin-left: 2rem;
+}
+
+.writing-section.focus-mode .focus-theme {
+  color: #8b7ed8;
+  font-weight: 500;
+}
+
+.writing-section.focus-mode .editor-wrapper {
+  flex: 1;
+  padding: 0;
+}
+
+.writing-section.focus-mode .essay-editor {
+  width: 100%;
+  height: 100%;
+  background: #1a1a1a;
+  color: #e0e0e0;
+  border: none;
+  padding: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  resize: none;
+  outline: none;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.writing-section.focus-mode .essay-editor::placeholder {
+  color: #666;
+}
+
+.writing-section.focus-mode .editor-footer.focus-mode {
+  background: #2d2d2d;
+  padding: 1rem 2rem;
+  border-top: 1px solid #404040;
+  justify-content: flex-end;
+}
+
+.writing-section.focus-mode .submit-button {
+  background: linear-gradient(135deg, #8b7ed8 0%, #6b5fcf 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.writing-section.focus-mode .submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 126, 216, 0.3);
+}
+
+/* Focus Mode Button */
+.focus-mode-btn {
+  background: linear-gradient(135deg, #8b7ed8 0%, #6b5fcf 100%);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.focus-mode-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(139, 126, 216, 0.3);
+}
+
+.focus-mode-btn.active {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+}
+
+.focus-mode-btn.active:hover {
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+/* Focus Mode Responsive */
+@media (max-width: 768px) {
+  .writing-section.focus-mode .editor-header,
+  .writing-section.focus-mode .editor-toolbar.focus-mode,
+  .writing-section.focus-mode .editor-footer.focus-mode {
+    padding: 1rem;
+  }
+
+  .writing-section.focus-mode .essay-editor {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .writing-section.focus-mode .editor-toolbar .toolbar-left {
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,424 @@
+/* Gamification Panel Styles */
+
+.gamification-panel {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #dee2e6;
+}
+
+/* Compact Version */
+.gamification-panel.compact {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.gamification-panel.compact .level-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.gamification-panel.compact .level-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 20px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: none !important;
+  animation: none !important;
+}
+
+.gamification-panel.compact .xp-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6c757d;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.gamification-panel.compact .badges-preview {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gamification-panel.compact .badge-mini {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b7ed8 0%, #6b5fcf 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 2px 8px rgba(139, 126, 216, 0.3);
+}
+
+.gamification-panel.compact .badges-more {
+  background: #e9ecef;
+  color: #6c757d;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Full Version */
+.gamification-panel.full {
+  max-width: 100%;
+}
+
+/* Panel Header */
+.panel-header {
+  margin-bottom: 2rem;
+}
+
+.level-section {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.level-badge-large {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  color: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  min-width: 200px;
+}
+
+.level-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.level-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.level-name {
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+.xp-section {
+  flex: 1;
+}
+
+.xp-display {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.xp-amount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #343a40;
+}
+
+.level-progress {
+  max-width: 400px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  background: linear-gradient(90deg, currentColor 0%, currentColor 100%);
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.xp-needed {
+  font-weight: 500;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f3f4;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #343a40;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Badges Section */
+.badges-section {
+  margin-bottom: 2rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #343a40;
+  margin: 0;
+}
+
+.toggle-badges {
+  background: none;
+  border: 1px solid #8b7ed8;
+  color: #8b7ed8;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-badges:hover {
+  background: #8b7ed8;
+  color: white;
+}
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  max-height: 400px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.badges-grid.expanded {
+  max-height: none;
+}
+
+.badge-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f3f4;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.badge-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.badge-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b7ed8 0%, #6b5fcf 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 2px 8px rgba(139, 126, 216, 0.3);
+}
+
+.badge-info {
+  flex: 1;
+}
+
+.badge-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #343a40;
+  margin: 0 0 0.25rem 0;
+}
+
+.badge-description {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Next Badges Section */
+.next-badges-section {
+  margin-bottom: 1rem;
+}
+
+.next-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.next-badge-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  opacity: 0.7;
+}
+
+.next-badge-card .badge-icon.locked {
+  background: #adb5bd;
+  box-shadow: 0 2px 8px rgba(173, 181, 189, 0.3);
+}
+
+.next-badge-card .badge-name {
+  color: #6c757d;
+}
+
+.next-badge-card .badge-description {
+  color: #adb5bd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gamification-panel.full {
+    padding: 1rem;
+  }
+
+  .level-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .level-badge-large {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .badges-grid,
+  .next-badges-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gamification-panel.compact {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .gamification-panel.compact .level-info {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Animations */
+@keyframes badgeUnlock {
+  0% {
+    transform: scale(0.8) rotate(-10deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.badge-card.new-badge {
+  animation: badgeUnlock 0.6s ease-out;
+}
+
+/* Level up animation */
+@keyframes levelUp {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 8px 32px rgba(139, 126, 216, 0.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.level-badge-large.level-up {
+  animation: levelUp 0.8s ease-out;
+}

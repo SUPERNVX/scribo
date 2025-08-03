@@ -1,0 +1,72 @@
+# Ignorar arquivos de sistema e temporários
+.DS_Store
+Thumbs.db
+*~
+*.bak
+*.swp
+erro.txt
+acli.exe
+
+# Ignorar arquivos de ambiente
+.env
+.env.production
+
+# Ignorar diretórios e arquivos do Node.js
+node_modules/
+package-lock.json
+yarn.lock
+build/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+frontend/node_modules/
+frontend/build/
+frontend/cypress/
+
+# Ignorar diretórios e arquivos do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+venv/
+.pytest_cache/
+backend/__pycache__/
+backend/database.db
+backend/cleanup_free_essays.log
+
+# Ignorar arquivos de backup e debug específicos do projeto
+backend/admin_dashboard_backup.py
+backend/temp_dashboard_fix.py
+backend/test_login_debug.py
+
+# Ignorar scripts de inicialização específicos do ambiente local
+backend/start_admin_dashboard.bat
+backend/start_dashboard_localhost.bat
+backend/start_dashboard_personalizado.py
+inicializacao/dashboard_admin.bat
+inicializacao/instalar_dependencias.bat
+inicializacao/instalar_dependencias.ps1
+inicializacao/start_dev_windows.bat
+inicializacao/start_dev_windows.ps1
+inicializacao/start_dual_terminal.bat
+inicializacao/start_dual_terminal.ps1
+inicializacao/start_fresh.bat
+
+# Ignorar configurações de IDE
+.vscode/
+
+# Ignorar arquivos .md, exceto README.md e CHANGELOG.md
+*.md
+!README.md
+!CHANGELOG.md
+!backend/CHANGELOG.md
+!frontend/CHANGELOG.md
+
+# Outros arquivos e diretórios a ignorar
+.kiro/
+base_tep2/
+templates/
+Dashboard_mapa.jpg
+inicializacao/

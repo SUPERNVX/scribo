@@ -1,0 +1,129 @@
+/* TiltedCard Styles - Pastel Design */
+
+.tilted-card-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mobile-warning {
+  position: absolute;
+  top: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #8a8a8a;
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .mobile-warning {
+    display: none;
+  }
+}
+
+.tilted-card-motion {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.tilted-card-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  will-change: transform;
+  transform: translateZ(0);
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(140, 126, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.dark .tilted-card-content {
+  background: rgba(42, 31, 61, 0.4);
+  border: 2px solid rgba(232, 213, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.tilted-card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  border-radius: 1rem;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.tilted-card-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(140, 126, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(140, 126, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.tilted-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  will-change: transform;
+  transform: translateZ(30px);
+}
+
+.tilted-card-tooltip {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 0.25rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  color: #3c3c3c;
+  opacity: 0;
+  z-index: 3;
+  border: 1px solid rgba(140, 126, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .tilted-card-tooltip {
+    display: block;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tilted-card-container {
+    perspective: 600px;
+  }
+
+  .tilted-card-placeholder {
+    padding: 1rem;
+  }
+}

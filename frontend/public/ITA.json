@@ -1,0 +1,236 @@
+{
+  "temas": [
+    {
+      "id": 32,
+      "titulo": "Tecnologia e privacidade",
+      "descricao": "Refletir sobre a relação entre o avanço tecnológico e o direito à privacidade na sociedade contemporânea.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2006,
+      "area": "Tecnologia/Direitos",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 33,
+      "titulo": "Consumismo",
+      "descricao": "Analisar criticamente a cultura do consumismo, seus impactos sociais, ambientais e individuais.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2007,
+      "area": "Sociedade/Economia",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 34,
+      "titulo": "Violência",
+      "descricao": "Desenvolver uma análise sobre as múltiplas facetas da violência na sociedade moderna.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2008,
+      "area": "Segurança/Sociedade",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 35,
+      "titulo": "Paradoxo da noção de segurança",
+      "descricao": "Discutir o paradoxo de que, quanto mais se busca segurança, maior pode ser a sensação de insegurança ou a perda de liberdade.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2009,
+      "area": "Filosofia/Sociedade",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 36,
+      "titulo": "Transferência da educação moral dos pais para a escola",
+      "descricao": "Debater sobre a crescente transferência da responsabilidade pela educação moral das crianças, da família para a instituição escolar.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2010,
+      "area": "Educação/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 37,
+      "titulo": "Mobilidade urbana",
+      "descricao": "Analisar os desafios e possíveis soluções para os problemas de mobilidade urbana nas grandes cidades.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2011,
+      "area": "Urbanismo/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 38,
+      "titulo": "Cidadania, preconceito e consciência social",
+      "descricao": "Refletir sobre a inter-relação entre o exercício da cidadania, a superação do preconceito e o desenvolvimento da consciência social.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2012,
+      "area": "Cidadania/Sociedade",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 39,
+      "titulo": "Tecnologia, publicidade e manipulação",
+      "descricao": "Analisar como a tecnologia potencializa o poder da publicidade e seus mecanismos de manipulação do consumidor.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2013,
+      "area": "Tecnologia/Comunicação",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 40,
+      "titulo": "O cinema",
+      "descricao": "Dissertar sobre o papel, a influência e as transformações do cinema como forma de arte e indústria cultural.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2014,
+      "area": "Cultura/Arte",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 41,
+      "titulo": "Trabalho, imigração e diversidade no Brasil",
+      "descricao": "Analisar as relações entre o mundo do trabalho, os fluxos migratórios e a formação da diversidade cultural e social no Brasil.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2015,
+      "area": "Sociedade/Trabalho",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 42,
+      "titulo": "A formação nas universidades e o mercado trabalhista",
+      "descricao": "Discutir o alinhamento (ou desalinhamento) entre a formação acadêmica oferecida pelas universidades e as demandas do mercado de trabalho.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2016,
+      "area": "Educação/Trabalho",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 43,
+      "titulo": "O poder das mídias e da comunicação",
+      "descricao": "Refletir sobre a influência e o poder exercido pelos meios de comunicação na formação da opinião pública e na sociedade.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2017,
+      "area": "Comunicação/Sociedade",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 44,
+      "titulo": "O envelhecimento",
+      "descricao": "Analisar os desafios e as implicações sociais, econômicas e de saúde do processo de envelhecimento populacional.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2018,
+      "area": "Sociedade/Saúde",
+      "dificuldade": "convencional"
+    },
+    {
+      "id": 45,
+      "titulo": "O incêndio no Museu Nacional",
+      "descricao": "Refletir sobre as causas, consequências e os significados simbólicos do incêndio no Museu Nacional para a memória e cultura do Brasil.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2019,
+      "area": "Cultura/História",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 46,
+      "titulo": "Em quais medidas o conhecimento tecnocientífico segue princípios éticos e morais?",
+      "descricao": "Debater sobre os limites éticos e morais na produção e aplicação do conhecimento tecnocientífico.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2020,
+      "area": "Ciência/Ética",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 47,
+      "titulo": "Que liberdade nos resta no século XXI?",
+      "descricao": "Refletir filosoficamente sobre o conceito e o exercício da liberdade no contexto do século XXI, marcado pela tecnologia e vigilância.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2021,
+      "area": "Filosofia/Sociedade",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 48,
+      "titulo": "A influência do medo nas ações humanas",
+      "descricao": "Analisar como o sentimento do medo (individual e coletivo) influencia as decisões e ações dos seres humanos.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2022,
+      "area": "Psicologia/Sociedade",
+      "dificuldade": "filosófico"
+    },
+    {
+      "id": 49,
+      "titulo": "Tecnofilia; riscos",
+      "descricao": "Discutir a tecnofilia (amor excessivo pela tecnologia) e os riscos associados a uma sociedade cada vez mais dependente de artefatos tecnológicos.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2023,
+      "area": "Tecnologia/Sociedade",
+      "dificuldade": "avançado"
+    },
+    {
+      "id": 50,
+      "titulo": "A responsabilidade da engenharia frente aos problemas do mundo contemporâneo",
+      "descricao": "Debater sobre o papel e a responsabilidade social e ética da engenharia na solução dos grandes problemas contemporâneos.",
+      "faculdade": "ITA",
+      "estilo": "Dissertativo-Argumentativo",
+      "ano": 2024,
+      "area": "Ética/Engenharia",
+      "dificuldade": "avançado"
+    }
+  ],
+  "estilos": [
+    {
+      "nome": "Dissertativo-Argumentativo",
+      "descricao": "Texto que apresenta uma tese e a defende com argumentos consistentes.",
+      "caracteristicas": [
+        "argumentação",
+        "persuasão",
+        "estrutura lógica",
+        "fundamentação"
+      ]
+    },
+    {
+      "nome": "Dissertativo",
+      "descricao": "Texto que expõe ideias sobre um determinado assunto, sem a necessidade obrigatória de defender uma tese específica, focando mais na reflexão e exploração do tema.",
+      "caracteristicas": [
+        "exposição de ideias",
+        "reflexão",
+        "conceituação",
+        "análise"
+      ]
+    }
+  ],
+  "areas": [
+    "Cidadania/Sociedade",
+    "Ciência/Ética",
+    "Comunicação/Sociedade",
+    "Cultura/Arte",
+    "Cultura/História",
+    "Educação/Sociedade",
+    "Educação/Trabalho",
+    "Ética/Engenharia",
+    "Filosofia/Sociedade",
+    "Psicologia/Sociedade",
+    "Segurança/Sociedade",
+    "Sociedade/Economia",
+    "Sociedade/Saúde",
+    "Sociedade/Trabalho",
+    "Tecnologia/Comunicação",
+    "Tecnologia/Direitos",
+    "Tecnologia/Sociedade",
+    "Urbanismo/Sociedade"
+  ]
+}

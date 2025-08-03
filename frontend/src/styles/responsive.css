@@ -1,0 +1,531 @@
+/* Responsive CSS - mantendo design atual */
+
+/* Touch device optimizations */
+.touch-device {
+  /* Improve touch targets */
+  --min-touch-target: 44px;
+  /* Optimize touch interactions */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Touch manipulation for better responsiveness */
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+/* Haptic feedback visual cues */
+.haptic-feedback {
+  transition: transform 0.1s ease-out;
+}
+
+.haptic-feedback:active {
+  transform: scale(0.95);
+}
+
+.touch-device button,
+.touch-device [role='button'],
+.touch-device input,
+.touch-device select,
+.touch-device textarea,
+.touch-device a {
+  min-height: var(--min-touch-target);
+  min-width: var(--min-touch-target);
+}
+
+/* Disable hover effects on touch devices */
+.touch-device .hover\:scale-105:hover {
+  transform: none;
+}
+
+.touch-device .hover\:shadow-lg:hover {
+  box-shadow: inherit;
+}
+
+/* Improve touch manipulation */
+.touch-device * {
+  touch-action: manipulation;
+}
+
+/* Better scrolling on mobile */
+.touch-device {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Orientation specific styles */
+.landscape {
+  /* Landscape specific adjustments */
+}
+
+.portrait {
+  /* Portrait specific adjustments */
+}
+
+/* Viewport optimizations */
+@viewport {
+  width: device-width;
+  initial-scale: 1;
+  maximum-scale: 5;
+  user-scalable: yes;
+}
+
+/* Prevent zoom on input focus (iOS) */
+@media screen and (max-width: 767px) {
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  input[type='number'],
+  input[type='tel'],
+  input[type='url'],
+  input[type='search'],
+  textarea,
+  select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* High DPI specific styles */
+  .high-dpi-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Container queries support (when available) */
+@supports (container-type: inline-size) {
+  .responsive-container {
+    container-type: inline-size;
+  }
+
+  @container (max-width: 400px) {
+    .container-responsive {
+      flex-direction: column;
+    }
+  }
+}
+
+/* Safe area insets for notched devices */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-area-left {
+  padding-left: env(safe-area-inset-left);
+}
+
+.safe-area-right {
+  padding-right: env(safe-area-inset-right);
+}
+
+.safe-area-insets {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Responsive text scaling */
+.text-responsive {
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+}
+
+.text-responsive-lg {
+  font-size: clamp(1.125rem, 3vw, 1.5rem);
+}
+
+.text-responsive-xl {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+/* Responsive spacing */
+.spacing-responsive {
+  padding: clamp(1rem, 4vw, 2rem);
+}
+
+.gap-responsive {
+  gap: clamp(0.5rem, 2vw, 1rem);
+}
+
+/* Mobile-first grid system */
+.grid-responsive {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .grid-responsive {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .grid-responsive {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-responsive {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Responsive images */
+.img-responsive {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Responsive videos */
+.video-responsive {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.video-responsive iframe,
+.video-responsive video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: ' (' attr(href) ')';
+  }
+
+  abbr[title]:after {
+    content: ' (' attr(title) ')';
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe\:animate-spin {
+    animation: none;
+  }
+
+  .motion-safe\:animate-bounce {
+    animation: none;
+  }
+
+  .motion-safe\:animate-pulse {
+    animation: none;
+  }
+
+  .motion-safe\:transition-transform {
+    transition: none;
+  }
+}
+
+/* Dark mode responsive adjustments */
+@media (prefers-color-scheme: dark) {
+  .auto-dark {
+    background-color: #1f2937;
+    color: #f9fafb;
+  }
+}
+
+/* Responsive utilities */
+.overflow-x-auto-mobile {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 768px) {
+  .overflow-x-auto-mobile {
+    overflow-x: visible;
+  }
+}
+
+/* Responsive flexbox utilities */
+.flex-responsive {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .flex-responsive {
+    flex-direction: row;
+  }
+}
+
+/* Responsive positioning */
+.sticky-mobile {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .sticky-mobile {
+    position: static;
+  }
+}
+
+/* Virtual keyboard optimizations */
+.keyboard-visible {
+  /* Adjust layout when virtual keyboard is visible */
+  transition: all 0.3s ease-out;
+}
+
+.keyboard-spacer {
+  /* Spacer to prevent content from being hidden behind keyboard */
+  flex-shrink: 0;
+}
+
+/* Mobile writing editor optimizations */
+.mobile-writing-editor {
+  /* Optimize for mobile writing */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.mobile-writing-editor textarea {
+  /* Prevent zoom on focus */
+  font-size: 16px !important;
+  /* Improve touch scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* Better text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mobile toolbar */
+.mobile-toolbar {
+  /* Ensure toolbar stays above keyboard */
+  z-index: 1000;
+  /* Smooth transitions */
+  transition: transform 0.3s ease-out;
+}
+
+/* Orientation-specific optimizations */
+@media screen and (orientation: landscape) {
+  .landscape-optimize {
+    /* Optimize for landscape mode */
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  
+  .mobile-writing-editor {
+    /* Adjust editor height in landscape */
+    min-height: 40vh;
+    max-height: 50vh;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .portrait-optimize {
+    /* Optimize for portrait mode */
+    max-height: 70vh;
+  }
+  
+  .mobile-writing-editor {
+    /* Adjust editor height in portrait */
+    min-height: 50vh;
+    max-height: 60vh;
+  }
+}
+
+/* Swipe gesture indicators */
+.swipe-indicator {
+  position: relative;
+  overflow: hidden;
+}
+
+.swipe-indicator::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease-out;
+}
+
+.swipe-indicator.swiping::before {
+  left: 100%;
+}
+
+/* Pull-to-refresh indicator */
+.pull-to-refresh {
+  position: relative;
+  overflow: hidden;
+}
+
+.pull-indicator {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(139, 92, 246, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-out;
+}
+
+.pull-indicator.active {
+  top: 10px;
+  background: rgba(139, 92, 246, 0.2);
+}
+
+/* Mobile carousel optimizations */
+.mobile-carousel {
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mobile-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile bottom sheet */
+.mobile-bottom-sheet {
+  /* Smooth slide animations */
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  /* Prevent overscroll */
+  overscroll-behavior: contain;
+}
+
+/* Mobile drawer */
+.mobile-drawer {
+  /* Hardware acceleration */
+  transform: translateZ(0);
+  will-change: transform;
+  /* Smooth animations */
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Touch feedback animations */
+@keyframes touchRipple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.touch-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.touch-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+}
+
+.touch-ripple:active::after {
+  animation: touchRipple 0.6s ease-out;
+}
+
+/* Mobile-specific focus styles */
+.mobile-focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.5);
+  border-radius: 8px;
+}
+
+/* Prevent text selection on UI elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Allow text selection in content areas */
+.allow-select {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Mobile performance optimizations */
+.mobile-optimized {
+  /* Hardware acceleration */
+  transform: translateZ(0);
+  /* Optimize repaints */
+  will-change: transform, opacity;
+  /* Smooth animations */
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-writing-editor,
+  .mobile-carousel,
+  .mobile-bottom-sheet,
+  .mobile-drawer {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .touch-ripple::after {
+    animation: none !important;
+  }
+}

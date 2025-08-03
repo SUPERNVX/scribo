@@ -1,0 +1,113 @@
+/* Badge System Styles */
+
+.badge-system {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.badge-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Aumentado */
+  height: 40px; /* Aumentado */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: none; /* Removido */
+  border-radius: 0; /* Removido */
+  box-shadow: none; /* Removido */
+}
+
+.badge-item:hover {
+  transform: scale(1.15); /* Aumentado o hover */
+  box-shadow: none;
+}
+
+.badge-icon {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Tooltip */
+.badge-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.badge-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.9);
+}
+
+.badge-item:hover .badge-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.badge-tooltip-title {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.badge-tooltip-description {
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .badge-item {
+    width: 28px;
+    height: 28px;
+  }
+
+  .badge-icon {
+    font-size: 14px;
+  }
+
+
+  .badge-tooltip {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+}
+
+/* Dark mode support */
+.dark .badge-tooltip {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1f2937;
+}
+
+.dark .badge-tooltip::after {
+  border-top-color: rgba(255, 255, 255, 0.95);
+}

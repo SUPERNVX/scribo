@@ -1,0 +1,98 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: scribo-cleanup-config
+  namespace: scribo
+  labels:
+    app: scribo
+    component: cleanup
+data:
+  # Configurações da limpeza
+  cleanup-days: "30"
+  cleanup-schedule: "0 2 * * *"  # 2:00 AM UTC diariamente
+  log-level: "INFO"
+  
+  # Script de limpeza com configurações específicas do K8s
+  cleanup-script.sh: |
+    #!/bin/bash
+    set -e
+    
+    echo "=== SCRIBO CLEANUP JOB STARTED ==="
+    echo "Timestamp: $(date -u)"
+    echo "Cleanup days: ${CLEANUP_DAYS:-30}"
+    echo "Environment: Kubernetes"
+    echo "=================================="
+    
+    # Verificar se o banco está acessível
+    echo "Checking database connectivity..."
+    python -c "
+    import asyncio
+    from database_adapter import db_adapter
+    
+    async def check_db():
+        try:
+            await db_adapter.init()
+            health = await db_adapter.health_check()
+            print(f'Database health: {health}')
+            await db_adapter.close()
+            return health.get('status') == 'healthy'
+        except Exception as e:
+            print(f'Database check failed: {e}')
+            return False
+    
+    if not asyncio.run(check_db()):
+        exit(1)
+    "
+    
+    # Executar limpeza
+    echo "Starting cleanup process..."
+    python cleanup_free_essays.py \
+        --days=${CLEANUP_DAYS:-30} \
+        --verbose
+    
+    CLEANUP_EXIT_CODE=$?
+    
+    if [ $CLEANUP_EXIT_CODE -eq 0 ]; then
+        echo "=== CLEANUP COMPLETED SUCCESSFULLY ==="
+    else
+        echo "=== CLEANUP FAILED (Exit code: $CLEANUP_EXIT_CODE) ==="
+        exit $CLEANUP_EXIT_CODE
+    fi
+    
+    echo "Timestamp: $(date -u)"
+    echo "========================================="
+
+  # Script de monitoramento
+  monitor-cleanup.sh: |
+    #!/bin/bash
+    # Script para monitorar execuções do cleanup
+    
+    NAMESPACE=${NAMESPACE:-scribo}
+    CRONJOB_NAME=${CRONJOB_NAME:-scribo-cleanup-free-essays}
+    
+    echo "=== SCRIBO CLEANUP MONITOR ==="
+    echo "Namespace: $NAMESPACE"
+    echo "CronJob: $CRONJOB_NAME"
+    echo "=============================="
+    
+    # Verificar status do CronJob
+    echo "CronJob Status:"
+    kubectl get cronjob $CRONJOB_NAME -n $NAMESPACE -o wide
+    
+    echo ""
+    echo "Recent Jobs:"
+    kubectl get jobs -n $NAMESPACE -l app=scribo,component=cleanup --sort-by=.metadata.creationTimestamp
+    
+    echo ""
+    echo "Recent Pods:"
+    kubectl get pods -n $NAMESPACE -l app=scribo,component=cleanup --sort-by=.metadata.creationTimestamp
+    
+    # Logs do último job
+    LAST_JOB=$(kubectl get jobs -n $NAMESPACE -l app=scribo,component=cleanup --sort-by=.metadata.creationTimestamp -o jsonpath='{.items[-1].metadata.name}' 2>/dev/null)
+    
+    if [ ! -z "$LAST_JOB" ]; then
+        echo ""
+        echo "Logs from last job ($LAST_JOB):"
+        echo "================================"
+        kubectl logs -n $NAMESPACE job/$LAST_JOB --tail=50
+    fi

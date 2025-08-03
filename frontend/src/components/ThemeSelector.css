@@ -1,0 +1,243 @@
+/* Theme Selector Modal Styles */
+.theme-selector-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.theme-selector-modal {
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.theme-selector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.theme-selector-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.theme-selector-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: #6b7280;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #e5e7eb;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.theme-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.folder-container {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.folder-container:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.folder-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.folder-item:hover {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+.folder-icon {
+  color: #3b82f6;
+  display: flex;
+  align-items: center;
+}
+
+.folder-name {
+  font-weight: 600;
+  color: #374151;
+  font-size: 1rem;
+}
+
+.theme-count {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-left: auto;
+}
+
+.themes-list {
+  background: #fafbfc;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.theme-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.875rem 1.25rem 0.875rem 2.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.theme-item:last-child {
+  border-bottom: none;
+}
+
+.theme-item:hover {
+  background: #f0f9ff;
+  border-color: #e0f2fe;
+}
+
+.file-icon {
+  color: #6b7280;
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+}
+
+.theme-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.theme-title {
+  font-weight: 500;
+  color: #374151;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.25rem;
+}
+
+.theme-meta {
+  font-size: 0.75rem;
+  color: #6b7280;
+  line-height: 1.3;
+}
+
+/* Scrollbar Styling */
+.theme-selector-content::-webkit-scrollbar,
+.themes-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.theme-selector-content::-webkit-scrollbar-track,
+.themes-list::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.theme-selector-content::-webkit-scrollbar-thumb,
+.themes-list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.theme-selector-content::-webkit-scrollbar-thumb:hover,
+.themes-list::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .theme-selector-modal {
+    width: 95%;
+    max-height: 85vh;
+  }
+
+  .theme-selector-header {
+    padding: 1rem 1.5rem;
+  }
+
+  .theme-selector-header h3 {
+    font-size: 1.125rem;
+  }
+
+  .folder-item {
+    padding: 0.875rem 1rem;
+  }
+
+  .theme-item {
+    padding: 0.75rem 1rem 0.75rem 2rem;
+  }
+
+  .theme-title {
+    font-size: 0.875rem;
+  }
+
+  .theme-meta {
+    font-size: 0.7rem;
+  }
+}
