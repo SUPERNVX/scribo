@@ -1782,7 +1782,8 @@ app.add_middleware(
         "https://scribo-j03w.onrender.com",
         "https://scribo-bay.vercel.app",
         "https://api.scribo.saymonaraujo.dev",
-        "https://scribo-iota.vercel.app"
+        "https://scribo-iota.vercel.app",
+        "https://scribo-p2z6q1qo2-supernvxs-projects.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
