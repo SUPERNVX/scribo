@@ -1777,11 +1777,13 @@ app.include_router(tier_router)
 
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=[
+        "https://scribo-delta.vercel.app",
+        "https://scribo-j03w.onrender.com"
+    ],
     allow_credentials=True,
-    allow_origins=["*"],  # Permitir todas as origens temporariamente
-    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_methods=["*"],
     allow_headers=["*"],
-    expose_headers=["*"]
 )
 
 
