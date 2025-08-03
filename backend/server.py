@@ -1779,7 +1779,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://scribo-delta.vercel.app",
-        "https://scribo-j03w.onrender.com"
+        "https://scribo-j03w.onrender.com",
+        "https://scribo-bay.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
