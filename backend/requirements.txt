@@ -42,3 +42,4 @@ fakeredis>=2.20.0
 # Geolocation dependencies
 geoip2>=4.7.0
 user-agents>=2.2.0
+jinja2>=3.1.4
