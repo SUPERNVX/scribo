@@ -10,6 +10,7 @@ acli.exe
 # Ignorar arquivos de ambiente
 .env
 .env.production
+frontend/.env.local
 
 # Ignorar diretórios e arquivos do Node.js
 node_modules/
@@ -63,6 +64,7 @@ inicializacao/start_fresh.bat
 !CHANGELOG.md
 !backend/CHANGELOG.md
 !frontend/CHANGELOG.md
+!DEPLOYMENT_GUIDE.md
 
 # Outros arquivos e diretórios a ignorar
 .kiro/
