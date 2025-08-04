@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scribo Admin Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .header-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .map-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .map-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .theme-toggle {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .admin-info {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .logout-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+        }
+        
+        .stat-card h3 {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .charts-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .chart-section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        /* Estilos para botões e modal */
+        .btn-change-tier {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background 0.3s;
+        }
+        
+        .btn-change-tier:hover {
+            background: #5a67d8;
+        }
+        
+        .user-actions {
+            margin-top: 0.5rem;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 95%;
+            max-width: 600px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        
+        .close {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .close:hover {
+            opacity: 0.7;
+        }
+        
+        .tier-form {
+            padding: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background: #5a67d8;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        .tier-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .tier-free {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .tier-premium {
+            background: #ffc107;
+            color: #212529;
+        }
+        
+        .tier-vitalicio {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        /* Botão de atualização */
+        .refresh-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .refresh-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-1px);
+        }
+        
+        .refresh-btn.loading {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .refresh-btn .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        [data-theme="dark"] .chart-section {
+            background: #2d3748;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .chart-controls {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        [data-theme="dark"] .chart-controls {
+            background: #2d3748;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .period-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .period-selector label {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        [data-theme="dark"] .period-selector label {
+            color: #a0a0a0;
+        }
+        
+        .period-selector select {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        
+        [data-theme="dark"] .period-selector select {
+            background: #374151;
+            color: #e0e0e0;
+            border-color: #4a5568;
+        }
+        
+        .users-section, .api-section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .section-header {
+            background: #f8f9fa;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-header h2 {
+            font-size: 1.2rem;
+            color: #333;
+        }
+        
+        .search-box {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 250px;
+        }
+        
+        .users-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .user-item {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .user-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .user-info h4 {
+            margin-bottom: 0.25rem;
+            color: #333;
+        }
+        
+        .user-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .user-stats {
+            text-align: right;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .tier-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 0.25rem;
+        }
+        
+        .tier-free { background: #e9ecef; color: #495057; }
+        .tier-premium { background: #fff3cd; color: #856404; }
+        .tier-vitalicio { background: #d1ecf1; color: #0c5460; }
+        
+        .chart-container {
+            padding: 1.5rem;
+            height: 400px;
+        }
+        
+        .chart-section .chart-container {
+            height: 350px; /* Altura específica para gráficos de API */
+        }
+        
+        .api-stats {
+            padding: 1.5rem;
+        }
+        
+        .api-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .api-item:last-child {
+            border-bottom: none;
+        }
+        
+        .api-info {
+            flex: 1;
+        }
+        
+        .api-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .api-description {
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .api-metrics {
+            text-align: right;
+            font-size: 0.8rem;
+            color: #666;
+            min-width: 180px;
+        }
+        
+        .metric-item {
+            margin-bottom: 0.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .metric-label {
+            color: #888;
+            margin-right: 0.5rem;
+        }
+        
+        .metric-value {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .success-rate {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .success-high { 
+            color: #155724; 
+            background: #d4edda;
+        }
+        .success-medium { 
+            color: #856404; 
+            background: #fff3cd;
+        }
+        .success-low { 
+            color: #721c24; 
+            background: #f8d7da;
+        }
+        
+        .status-indicator {
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+        }
+        
+        .status-active { color: #28a745; font-weight: bold; }
+        .status-warning { color: #ffc107; font-weight: bold; }
+        .status-error { color: #dc3545; font-weight: bold; }
+        .status-inactive { color: #6c757d; }
+        
+        .tier-management {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .tier-form {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 1rem;
+            align-items: end;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background: #5a6fd8;
+        }
+        
+        .alert {
+            padding: 0.75rem 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Dark Mode Styles */
+        [data-theme="dark"] {
+            background: #1a1a1a !important;
+            color: #e0e0e0;
+        }
+        
+        [data-theme="dark"] body {
+            background: #1a1a1a !important;
+            color: #e0e0e0;
+        }
+        
+        [data-theme="dark"] .container {
+            background: #1a1a1a !important;
+        }
+        
+        [data-theme="dark"] .header {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+        }
+        
+        [data-theme="dark"] .stat-card,
+        [data-theme="dark"] .users-section,
+        [data-theme="dark"] .api-section,
+        [data-theme="dark"] .tier-management {
+            background: #2d3748;
+            color: #e0e0e0;
+            border-color: #4a5568;
+        }
+        
+        [data-theme="dark"] .section-header {
+            background: #374151;
+            border-color: #4a5568;
+        }
+        
+        [data-theme="dark"] .user-item:hover {
+            background: #374151;
+        }
+        
+        [data-theme="dark"] .api-item {
+            border-color: #4a5568;
+        }
+        
+        [data-theme="dark"] .api-name,
+        [data-theme="dark"] .metric-value {
+            color: #e0e0e0;
+        }
+        
+        [data-theme="dark"] .api-description,
+        [data-theme="dark"] .metric-label {
+            color: #a0a0a0;
+        }
+        
+        [data-theme="dark"] input,
+        [data-theme="dark"] select {
+            background: #374151;
+            color: #e0e0e0;
+            border-color: #4a5568;
+        }
+        
+        [data-theme="dark"] .btn-primary {
+            background: #4f46e5;
+        }
+        
+        [data-theme="dark"] .btn-primary:hover {
+            background: #4338ca;
+        }
+        
+        [data-theme="dark"] .tier-free { 
+            background: #374151; 
+            color: #d1d5db; 
+        }
+        
+        [data-theme="dark"] .tier-premium { 
+            background: #451a03; 
+            color: #fbbf24; 
+        }
+        
+        [data-theme="dark"] .tier-vitalicio { 
+            background: #164e63; 
+            color: #06b6d4; 
+        }
+        
+        [data-theme="dark"] .success-high { 
+            color: #10b981; 
+            background: #064e3b;
+        }
+        
+        [data-theme="dark"] .success-medium { 
+            color: #f59e0b; 
+            background: #451a03;
+        }
+        
+        [data-theme="dark"] .success-low { 
+            color: #ef4444; 
+            background: #7f1d1d;
+        }
+        
+        [data-theme="dark"] .alert-success {
+            background: #064e3b;
+            color: #10b981;
+            border-color: #065f46;
+        }
+        
+        [data-theme="dark"] .alert-error {
+            background: #7f1d1d;
+            color: #ef4444;
+            border-color: #991b1b;
+        }
+        
+        [data-theme="dark"] .search-box {
+            background: #374151;
+            color: #e0e0e0;
+            border-color: #4a5568;
+        }
+        
+        [data-theme="dark"] .search-box::placeholder {
+            color: #9ca3af;
+        }
+        
+        [data-theme="dark"] .value {
+            color: #e0e0e0;
+        }
+        
+        [data-theme="dark"] h1,
+        [data-theme="dark"] h2,
+        [data-theme="dark"] h3,
+        [data-theme="dark"] h4 {
+            color: #e0e0e0;
+        }
+        
+        [data-theme="dark"] small {
+            color: #9ca3af !important;
+        }
+        
+        /* Complete dark mode for charts and remaining elements */
+        [data-theme="dark"] .chart-container {
+            background: #2d3748;
+        }
+        
+        [data-theme="dark"] .user-info h4 {
+            color: #e0e0e0;
+        }
+        
+        [data-theme="dark"] .user-info p {
+            color: #a0a0a0;
+        }
+        
+        [data-theme="dark"] .user-stats {
+            color: #a0a0a0;
+        }
+        
+        [data-theme="dark"] .form-group label {
+            color: #e0e0e0;
+        }
+        
+        [data-theme="dark"] .status-inactive {
+            color: #9ca3af;
+        }
+        
+        [data-theme="dark"] .logout-btn {
+            background: rgba(255,255,255,0.15);
+        }
+        
+        [data-theme="dark"] .logout-btn:hover {
+            background: rgba(255,255,255,0.25);
+        }
+        
+        [data-theme="dark"] .theme-toggle {
+            background: rgba(255,255,255,0.15);
+        }
+        
+        [data-theme="dark"] .theme-toggle:hover {
+            background: rgba(255,255,255,0.25);
+        }
+        
+        /* Dark mode for specific text elements */
+        [data-theme="dark"] .admin-info {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        /* Ensure all borders are properly styled in dark mode */
+        [data-theme="dark"] .stat-card {
+            border-left-color: #667eea;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        [data-theme="dark"] .users-section,
+        [data-theme="dark"] .api-section {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        [data-theme="dark"] .tier-management {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        /* Dark scrollbar for webkit browsers */
+        [data-theme="dark"] .users-list::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        [data-theme="dark"] .users-list::-webkit-scrollbar-track {
+            background: #374151;
+        }
+        
+        [data-theme="dark"] .users-list::-webkit-scrollbar-thumb {
+            background: #4a5568;
+            border-radius: 4px;
+        }
+        
+        [data-theme="dark"] .users-list::-webkit-scrollbar-thumb:hover {
+            background: #5a6578;
+        }
+        
+        /* System Status Cards */
+        .system-status {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .status-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        [data-theme="dark"] .status-card {
+            background: #2d3748;
+        }
+        
+        .status-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .status-title {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        [data-theme="dark"] .status-title {
+            color: #a0a0a0;
+        }
+        
+        .status-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        [data-theme="dark"] .status-value {
+            color: #e0e0e0;
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tier-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .system-status {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .period-selector {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
+            
+            .chart-container {
+                height: 300px; /* Altura menor em mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🎯 Scribo Admin Dashboard</h1>
+        <div class="header-info">
+            <div class="admin-info">
+                👤 Admin: {{ admin_email }}
+            </div>
+            <button class="refresh-btn" onclick="refreshDashboard()" id="refreshBtn" title="Atualizar dados">
+                <span id="refreshIcon">🔄</span>
+                <span>Atualizar</span>
+            </button>
+            <a href="/admin/map" class="map-btn" title="Dashboard de Geolocalização">
+                🗺️ Mapa
+            </a>
+            <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
+                <span id="theme-icon">🌙</span>
+            </button>
+            <a href="/logout" class="logout-btn">Sair</a>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Alertas -->
+        {% if request.query_params.get('success') == 'tier_updated' %}
+        <div class="alert alert-success">
+            ✅ Tier do usuário atualizado com sucesso!
+        </div>
+        {% endif %}
+        
+        {% if request.query_params.get('error') == 'update_failed' %}
+        <div class="alert alert-error">
+            ❌ Erro ao atualizar tier do usuário. Tente novamente.
+        </div>
+        {% endif %}
+        
+        <!-- Status do Sistema -->
+        <div class="system-status">
+            <div class="status-card">
+                <div class="status-icon">🟢</div>
+                <div class="status-title">Sistema</div>
+                <div class="status-value">Online</div>
+            </div>
+            <div class="status-card">
+                <div class="status-icon">⏱️</div>
+                <div class="status-title">Uptime</div>
+                <div class="status-value" id="uptime">Calculando...</div>
+            </div>
+            <div class="status-card">
+                <div class="status-icon">🔄</div>
+                <div class="status-title">Última Atualização</div>
+                <div class="status-value" id="last-update">Agora</div>
+            </div>
+            <div class="status-card">
+                <div class="status-icon">📊</div>
+                <div class="status-title">APIs Ativas</div>
+                <div class="status-value" id="active-apis">{{ api_stats|length }}</div>
+            </div>
+        </div>
+
+        <!-- Estatísticas Gerais -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total de Usuários</h3>
+                <div class="value">{{ system_stats.total_users }}</div>
+                <small style="color: #666; font-size: 0.8rem;">
+                    {% if system_stats.total_users > 0 %}
+                    📈 {{ ((system_stats.premium_users + system_stats.vitalicio_users) / system_stats.total_users * 100)|round(1) }}% Premium
+                    {% else %}
+                    Aguardando usuários
+                    {% endif %}
+                </small>
+            </div>
+            <div class="stat-card">
+                <h3>Usuários Premium</h3>
+                <div class="value">{{ system_stats.premium_users + system_stats.vitalicio_users }}</div>
+                <small style="color: #666; font-size: 0.8rem;">
+                    Premium: {{ system_stats.premium_users }} | Vitalício: {{ system_stats.vitalicio_users }}
+                </small>
+            </div>
+            <div class="stat-card">
+                <h3>Total de Redações</h3>
+                <div class="value">{{ system_stats.total_essays }}</div>
+                <small style="color: #666; font-size: 0.8rem;">
+                    {% if system_stats.total_users > 0 %}
+                    📝 {{ (system_stats.total_essays / system_stats.total_users)|round(1) }} por usuário
+                    {% else %}
+                    Aguardando redações
+                    {% endif %}
+                </small>
+            </div>
+            <div class="stat-card">
+                <h3>Chamadas de API</h3>
+                <div class="value">{{ system_stats.total_api_calls }}</div>
+                <small style="color: #666; font-size: 0.8rem;">
+                    📊 {{ system_stats.avg_daily_usage|round(1) }} por dia (média)
+                </small>
+            </div>
+        </div>
+        
+        <!-- Conteúdo Principal -->
+        <div class="content-grid">
+            <!-- Lista de Usuários -->
+            <div class="users-section">
+                <div class="section-header">
+                    <h2>👥 Usuários do Sistema</h2>
+                    <form method="get" action="/search" style="margin: 0;">
+                        <input type="text" name="q" placeholder="Buscar por email ou nome..." 
+                               class="search-box" value="{{ search_query or '' }}">
+                    </form>
+                </div>
+                <div class="users-list">
+                    {% for user in users %}
+                    <div class="user-item">
+                        <div class="user-info">
+                            <h4>{{ user.name }}</h4>
+                            <p>{{ user.email }}</p>
+                            <span class="tier-badge tier-{{ user.tier }}">{{ user.tier }}</span>
+                            {% if user.tier_expires_at %}
+                            <p style="font-size: 0.7rem; color: #dc3545;">
+                                Expira: {{ user.tier_expires_at[:10] }}
+                            </p>
+                            {% endif %}
+                        </div>
+                        <div class="user-stats">
+                            <div>📝 {{ user.total_essays }} redações</div>
+                            <div>📊 {{ user.paragraph_analysis_count }} análises</div>
+                            {% if user.avg_score %}
+                            <div>⭐ {{ user.avg_score }}/10 média</div>
+                            {% endif %}
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn-change-tier" onclick="openTierModal('{{ user.user_id }}', '{{ user.email }}', '{{ user.tier }}')">
+                                🔧 Alterar Tier
+                            </button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                    {% if not users %}
+                    <div style="padding: 2rem; text-align: center; color: #666;">
+                        {% if search_query %}
+                        🔍 Nenhum usuário encontrado para "{{ search_query }}"
+                        {% else %}
+                        📭 Nenhum usuário encontrado no sistema
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Estatísticas de API -->
+            <div class="api-section">
+                <div class="section-header">
+                    <h2>🔧 Status das APIs</h2>
+                </div>
+                <div class="api-stats">
+                    {% for api in api_stats %}
+                    <div class="api-item">
+                        <div class="api-info">
+                            <div class="api-name">
+                                {% if api.model_name == 'deepseek14b' %}
+                                🤖 DeepSeek 14B (Análise Rápida)
+                                {% elif api.model_name == 'llama' %}
+                                🧠 Llama 253B Ultra (Reasoning)
+                                {% elif api.model_name == 'deepseek' %}
+                                🔍 DeepSeek R1 (Correção Principal)
+                                {% elif api.model_name == 'gpt4o' %}
+                                💡 GPT-4o Mini (Removido)
+                                {% else %}
+                                🔧 {{ api.model_name }}
+                                {% endif %}
+                            </div>
+                            <div class="api-description">
+                                {% if api.model_name == 'deepseek14b' %}
+                                Análise de parágrafos individuais
+                                {% elif api.model_name == 'llama' %}
+                                Análise completa com raciocínio avançado
+                                {% elif api.model_name == 'deepseek' %}
+                                Correção completa e análise detalhada
+                                {% elif api.model_name == 'gpt4o' %}
+                                Modelo removido por limitações de API
+                                {% else %}
+                                Modelo de IA disponível
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="api-metrics">
+                            <div class="success-rate {% if api.success_rate >= 0.95 %}success-high{% elif api.success_rate >= 0.8 %}success-medium{% else %}success-low{% endif %}">
+                                {% if api.total_calls > 0 %}
+                                {{ (api.success_rate * 100)|round(1) }}% sucesso
+                                {% else %}
+                                Sem dados
+                                {% endif %}
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Total:</span>
+                                <span class="metric-value">{{ api.total_calls }} chamadas</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">24h:</span>
+                                <span class="metric-value">{{ api.last_24h_calls }} chamadas</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Tempo:</span>
+                                <span class="metric-value">
+                                    {% if api.avg_response_time > 0 %}
+                                    {{ api.avg_response_time|round(2) }}s médio
+                                    {% else %}
+                                    N/A
+                                    {% endif %}
+                                </span>
+                            </div>
+                            <div class="status-indicator">
+                                {% if api.total_calls > 0 %}
+                                    {% if api.success_rate >= 0.95 %}
+                                    <span class="status-active">🟢 Ativo</span>
+                                    {% elif api.success_rate >= 0.8 %}
+                                    <span class="status-warning">🟡 Instável</span>
+                                    {% else %}
+                                    <span class="status-error">🔴 Problemas</span>
+                                    {% endif %}
+                                {% else %}
+                                <span class="status-inactive">⚪ Sem uso</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                    {% if not api_stats %}
+                    <div style="text-align: center; color: #666; padding: 2rem;">
+                        <div style="font-size: 2rem; margin-bottom: 1rem;">📊</div>
+                        <div style="font-weight: bold; margin-bottom: 0.5rem;">Carregando Status das APIs</div>
+                        <div style="font-size: 0.9rem;">Aguardando dados de uso...</div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gráfico de Uso -->
+        <div class="users-section" style="margin-bottom: 3rem;">
+            <div class="section-header">
+                <h2>📈 Distribuição de Usuários por Tier</h2>
+            </div>
+            <div class="chart-container">
+                <canvas id="tierChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- Controles de Período dos Gráficos -->
+        <div class="chart-controls" style="margin-bottom: 2rem;">
+            <div class="section-header">
+                <h2>📊 Gráficos de Chamadas de API por Modelo</h2>
+                <div class="period-selector">
+                    <label for="period-select">Período:</label>
+                    <select id="period-select" onchange="updateChartPeriod()">
+                        <option value="24">Últimas 24 horas</option>
+                        <option value="168">Últimos 7 dias</option>
+                        <option value="720">Últimas 4 semanas</option>
+                        <option value="2160">Últimos 3 meses</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gráficos de API dos Modelos -->
+        <div class="charts-grid">
+            <div class="chart-section">
+                <div class="section-header">
+                    <h2>🤖 DeepSeek 14B - Análise Rápida de Parágrafos</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="deepseek14bChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-section">
+                <div class="section-header">
+                    <h2>🧠 Llama 253B Ultra - Análise Completa com Reasoning</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="llama253bChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-section">
+                <div class="section-header">
+                    <h2>🔍 DeepSeek R1 - Correção Principal de Redações</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="deepseekChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal para Alterar Tier -->
+        <div id="tierModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>🔧 Alterar Tier do Usuário</h3>
+                    <span class="close" onclick="closeTierModal()">&times;</span>
+                </div>
+                <form method="post" action="/update-user-tier" class="tier-form">
+                    <div class="form-group">
+                        <label for="modal_user_email">Email do Usuário:</label>
+                        <input type="email" id="modal_user_email" name="user_id" readonly 
+                               style="background: #f5f5f5; color: #666;">
+                    </div>
+                    <div class="form-group">
+                        <label for="modal_tier">Novo Tier:</label>
+                        <select id="modal_tier" name="tier" required onchange="toggleExpirationField()">
+                            <option value="free">🆓 Free - Gratuito</option>
+                            <option value="premium">⭐ Premium - Pago</option>
+                            <option value="vitalicio">💎 Vitalício - Permanente</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="expiration_group" style="display: none;">
+                        <label for="modal_expires_at">Data de Expiração (Premium):</label>
+                        <input type="date" id="modal_expires_at" name="expires_at">
+                        <small style="color: #666; font-size: 0.8rem;">
+                            Deixe em branco para Premium sem expiração
+                        </small>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="closeTierModal()">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn-primary">
+                            💾 Atualizar Tier
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Funções do Modal de Tier
+        function openTierModal(userId, email, currentTier) {
+            document.getElementById('modal_user_email').value = email;
+            document.getElementById('modal_tier').value = currentTier;
+            document.getElementById('tierModal').style.display = 'block';
+            toggleExpirationField();
+        }
+        
+        function closeTierModal() {
+            document.getElementById('tierModal').style.display = 'none';
+        }
+        
+        function toggleExpirationField() {
+            const tierSelect = document.getElementById('modal_tier');
+            const expirationGroup = document.getElementById('expiration_group');
+            
+            if (tierSelect.value === 'premium') {
+                expirationGroup.style.display = 'block';
+                // Definir data padrão para 1 ano a partir de hoje
+                const today = new Date();
+                const nextYear = new Date(today.getFullYear() + 1, today.getMonth(), today.getDate());
+                document.getElementById('modal_expires_at').value = nextYear.toISOString().split('T')[0];
+            } else {
+                expirationGroup.style.display = 'none';
+                document.getElementById('modal_expires_at').value = '';
+            }
+        }
+        
+        // Fechar modal ao clicar fora dele
+        window.onclick = function(event) {
+            const modal = document.getElementById('tierModal');
+            if (event.target === modal) {
+                closeTierModal();
+            }
+        }
+        
+        // Mostrar mensagens de sucesso/erro
+        function showMessage(type, message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `alert alert-${type}`;
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1rem 1.5rem;
+                border-radius: 5px;
+                color: white;
+                font-weight: bold;
+                z-index: 1001;
+                animation: slideIn 0.3s ease;
+                ${type === 'success' ? 'background: #28a745;' : 'background: #dc3545;'}
+            `;
+            messageDiv.textContent = message;
+            document.body.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 5000);
+        }
+        
+        // Verificar parâmetros da URL para mostrar mensagens
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'tier_updated') {
+            showMessage('success', '✅ Tier do usuário atualizado com sucesso!');
+        } else if (urlParams.get('error') === 'update_failed') {
+            showMessage('error', '❌ Erro ao atualizar tier do usuário. Tente novamente.');
+        }
+        
+        // Gráfico de distribuição de tiers
+        const ctx = document.getElementById('tierChart').getContext('2d');
+        const tierChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Free', 'Premium', 'Vitalício'],
+                datasets: [{
+                    data: [
+                        {{ system_stats.free_users }},
+                        {{ system_stats.premium_users }},
+                        {{ system_stats.vitalicio_users }}
+                    ],
+                    backgroundColor: [
+                        '#6c757d',
+                        '#ffc107',
+                        '#17a2b8'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            usePointStyle: true
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Gráficos dos modelos de IA
+        const deepseek14bCtx = document.getElementById('deepseek14bChart').getContext('2d');
+        const llama253bCtx = document.getElementById('llama253bChart').getContext('2d');
+        const deepseekCtx = document.getElementById('deepseekChart').getContext('2d');
+        
+        let deepseek14bChart, llama253bChart, deepseekChart;
+        let currentPeriod = 24; // Default: 24 hours
+        
+        // Função para carregar dados dos gráficos
+        async function loadModelCharts() {
+            try {
+                // Carregar dados do DeepSeek 14B
+                const deepseek14bResponse = await fetch(`/api/timeline/deepseek14b?hours=${currentPeriod}`);
+                const deepseek14bData = await deepseek14bResponse.json();
+                
+                // Carregar dados do Llama 253B (Ultra)
+                const llama253bResponse = await fetch(`/api/timeline/llama?hours=${currentPeriod}`);
+                const llama253bData = await llama253bResponse.json();
+                
+                // Carregar dados do DeepSeek
+                const deepseekResponse = await fetch(`/api/timeline/deepseek?hours=${currentPeriod}`);
+                const deepseekData = await deepseekResponse.json();
+                
+                // Processar dados para os gráficos
+                const processTimelineData = (timeline) => {
+                    const labels = [];
+                    const calls = [];
+                    const responseTimes = [];
+                    
+                    timeline.forEach(item => {
+                        let label;
+                        const date = new Date(item.hour);
+                        
+                        if (currentPeriod <= 24) {
+                            // Horas para período de 24h
+                            label = date.toLocaleTimeString('pt-BR', {
+                                hour: '2-digit',
+                                minute: '2-digit'
+                            });
+                        } else if (currentPeriod <= 168) {
+                            // Dias para período de 7 dias
+                            label = date.toLocaleDateString('pt-BR', {
+                                weekday: 'short',
+                                day: '2-digit'
+                            });
+                        } else if (currentPeriod <= 720) {
+                            // Semanas para período de 4 semanas
+                            label = date.toLocaleDateString('pt-BR', {
+                                day: '2-digit',
+                                month: '2-digit'
+                            });
+                        } else {
+                            // Meses para período de 3 meses
+                            label = date.toLocaleDateString('pt-BR', {
+                                month: 'short',
+                                year: '2-digit'
+                            });
+                        }
+                        
+                        labels.push(label);
+                        calls.push(item.calls);
+                        responseTimes.push(item.avg_response_time);
+                    });
+                    
+                    return { labels, calls, responseTimes };
+                };
+                
+                const deepseek14bProcessed = processTimelineData(deepseek14bData.timeline || []);
+                const llama253bProcessed = processTimelineData(llama253bData.timeline || []);
+                const deepseekProcessed = processTimelineData(deepseekData.timeline || []);
+                
+                // Criar gráfico DeepSeek 14B
+                if (deepseek14bChart) deepseek14bChart.destroy();
+                deepseek14bChart = new Chart(deepseek14bCtx, {
+                    type: 'line',
+                    data: {
+                        labels: deepseek14bProcessed.labels,
+                        datasets: [{
+                            label: 'Chamadas por Hora',
+                            data: deepseek14bProcessed.calls,
+                            borderColor: '#ff6b6b',
+                            backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                            tension: 0.4,
+                            yAxisID: 'y'
+                        }, {
+                            label: 'Tempo de Resposta (s)',
+                            data: deepseek14bProcessed.responseTimes,
+                            borderColor: '#4ecdc4',
+                            backgroundColor: 'rgba(78, 205, 196, 0.1)',
+                            tension: 0.4,
+                            yAxisID: 'y1'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                title: {
+                                    display: true,
+                                    text: 'Número de Chamadas'
+                                }
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                title: {
+                                    display: true,
+                                    text: 'Tempo de Resposta (s)'
+                                },
+                                grid: {
+                                    drawOnChartArea: false,
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            },
+                            title: {
+                                display: true,
+                                text: 'DeepSeek 14B - Análise Rápida de Parágrafos'
+                            }
+                        }
+                    }
+                });
+                
+                // Criar gráfico Llama 253B
+                if (llama253bChart) llama253bChart.destroy();
+                llama253bChart = new Chart(llama253bCtx, {
+                    type: 'line',
+                    data: {
+                        labels: llama253bProcessed.labels,
+                        datasets: [{
+                            label: 'Chamadas por Hora',
+                            data: llama253bProcessed.calls,
+                            borderColor: '#667eea',
+                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                            tension: 0.4,
+                            yAxisID: 'y'
+                        }, {
+                            label: 'Tempo de Resposta (s)',
+                            data: llama253bProcessed.responseTimes,
+                            borderColor: '#f093fb',
+                            backgroundColor: 'rgba(240, 147, 251, 0.1)',
+                            tension: 0.4,
+                            yAxisID: 'y1'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                title: {
+                                    display: true,
+                                    text: 'Número de Chamadas'
+                                }
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                title: {
+                                    display: true,
+                                    text: 'Tempo de Resposta (s)'
+                                },
+                                grid: {
+                                    drawOnChartArea: false,
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Llama 253B Ultra - Análise Completa com Reasoning'
+                            }
+                        }
+                    }
+                });
+                
+                // Criar gráfico DeepSeek
+                if (deepseekChart) deepseekChart.destroy();
+                deepseekChart = new Chart(deepseekCtx, {
+                    type: 'line',
+                    data: {
+                        labels: deepseekProcessed.labels,
+                        datasets: [{
+                            label: 'Chamadas por Hora',
+                            data: deepseekProcessed.calls,
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            tension: 0.4,
+                            yAxisID: 'y'
+                        }, {
+                            label: 'Tempo de Resposta (s)',
+                            data: deepseekProcessed.responseTimes,
+                            borderColor: '#8b5cf6',
+                            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                            tension: 0.4,
+                            yAxisID: 'y1'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                title: {
+                                    display: true,
+                                    text: 'Número de Chamadas'
+                                }
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                title: {
+                                    display: true,
+                                    text: 'Tempo de Resposta (s)'
+                                },
+                                grid: {
+                                    drawOnChartArea: false,
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            },
+                            title: {
+                                display: true,
+                                text: 'DeepSeek R1 - Correção Principal de Redações'
+                            }
+                        }
+                    }
+                });
+                
+                console.log('📊 Gráficos de IA carregados:', {
+                    deepseek14b: deepseek14bProcessed.calls.length + ' pontos',
+                    llama253b: llama253bProcessed.calls.length + ' pontos',
+                    deepseek: deepseekProcessed.calls.length + ' pontos',
+                    periodo: currentPeriod + 'h'
+                });
+                
+            } catch (error) {
+                console.error('Erro ao carregar gráficos de IA:', error);
+            }
+        }
+        
+        // Função para atualizar período dos gráficos
+        function updateChartPeriod() {
+            const select = document.getElementById('period-select');
+            currentPeriod = parseInt(select.value);
+            
+            console.log(`📅 Período alterado para: ${currentPeriod}h`);
+            
+            // Recarregar gráficos com novo período
+            loadModelCharts();
+        }
+        
+        // Carregar gráficos inicialmente
+        loadModelCharts();
+        
+        // Função para atualizar dashboard
+        async function refreshDashboard() {
+            const refreshBtn = document.getElementById('refreshBtn');
+            const refreshIcon = document.getElementById('refreshIcon');
+            
+            // Mostrar loading
+            refreshBtn.classList.add('loading');
+            refreshIcon.innerHTML = '<div class="spinner"></div>';
+            refreshBtn.disabled = true;
+            
+            try {
+                // Recarregar a página
+                window.location.reload();
+            } catch (error) {
+                console.error('Erro ao atualizar:', error);
+                showMessage('error', '❌ Erro ao atualizar dados');
+                
+                // Restaurar botão
+                refreshBtn.classList.remove('loading');
+                refreshIcon.innerHTML = '🔄';
+                refreshBtn.disabled = false;
+            }
+        }
+        
+        // Auto-refresh dos gráficos a cada 5 minutos
+        setInterval(() => {
+            loadModelCharts(); // Recarregar apenas os gráficos
+        }, 300000);
+        
+        // Refresh completo da página a cada 1 hora
+        setInterval(() => {
+            console.log('🔄 Atualização automática do dashboard...');
+            window.location.reload();
+        }, 3600000); // 1 hora = 3600000ms
+        
+        // Mostrar/ocultar campo de expiração baseado no tier selecionado
+        const tierElement = document.getElementById('tier');
+        if (tierElement) {
+            tierElement.addEventListener('change', function() {
+                const expiresField = document.getElementById('expires_at');
+                if (this.value === 'premium') {
+                    expiresField.style.display = 'block';
+                    expiresField.required = true;
+                } else {
+                    expiresField.style.display = 'none';
+                    expiresField.required = false;
+                    expiresField.value = '';
+                }
+            });
+            
+            // Inicializar campo de expiração
+            tierElement.dispatchEvent(new Event('change'));
+        }
+        
+        // Theme Management
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            const themeIcon = document.getElementById('theme-icon');
+            themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            
+            // Update chart colors
+            setTimeout(updateChartColors, 100);
+            
+            console.log(`🎨 Tema alterado para: ${newTheme}`);
+        }
+        
+        // Load saved theme
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.body.setAttribute('data-theme', savedTheme);
+            
+            const themeIcon = document.getElementById('theme-icon');
+            themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        }
+        
+        // Update system status
+        function updateSystemStatus() {
+            const now = new Date();
+            
+            // Update last update time
+            document.getElementById('last-update').textContent = now.toLocaleTimeString('pt-BR', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            
+            // Simulate uptime (in production, get from server)
+            const uptimeHours = Math.floor(Math.random() * 720) + 24; // 1-30 days
+            const days = Math.floor(uptimeHours / 24);
+            const hours = uptimeHours % 24;
+            document.getElementById('uptime').textContent = `${days}d ${hours}h`;
+            
+            // Update active APIs count
+            const activeApis = document.querySelectorAll('.api-item').length;
+            document.getElementById('active-apis').textContent = activeApis;
+        }
+        
+        // Update chart colors based on theme
+        function updateChartColors() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            
+            // Update tier chart if it exists
+            if (typeof tierChart !== 'undefined' && tierChart) {
+                tierChart.options.plugins.legend.labels.color = isDark ? '#e0e0e0' : '#333';
+                tierChart.update();
+            }
+            
+            // Update model charts if they exist
+            const charts = [
+                { chart: deepseek14bChart, name: 'deepseek14bChart' },
+                { chart: llama253bChart, name: 'llama253bChart' },
+                { chart: deepseekChart, name: 'deepseekChart' }
+            ];
+            
+            charts.forEach(({ chart, name }) => {
+                if (typeof chart !== 'undefined' && chart) {
+                    chart.options.plugins.legend.labels.color = isDark ? '#e0e0e0' : '#333';
+                    chart.options.plugins.title.color = isDark ? '#e0e0e0' : '#333';
+                    chart.options.scales.y.title.color = isDark ? '#e0e0e0' : '#333';
+                    chart.options.scales.y1.title.color = isDark ? '#e0e0e0' : '#333';
+                    chart.options.scales.y.ticks.color = isDark ? '#a0a0a0' : '#666';
+                    chart.options.scales.y1.ticks.color = isDark ? '#a0a0a0' : '#666';
+                    chart.options.scales.x.ticks.color = isDark ? '#a0a0a0' : '#666';
+                    chart.update();
+                }
+            });
+        }
+        
+        // Initialize theme and status
+        loadTheme();
+        updateSystemStatus();
+        
+        // Update status every minute
+        setInterval(updateSystemStatus, 60000);
+        
+        console.log('🎯 Scribo Admin Dashboard carregado!');
+        console.log('📊 Estatísticas:', {
+            usuarios: {{ system_stats.total_users }},
+            redacoes: {{ system_stats.total_essays }},
+            apis: {{ system_stats.total_api_calls }}
+        });
+        console.log('🎨 Modo escuro disponível - clique no botão 🌙/☀️');
+    </script>
+</body>
+</html>

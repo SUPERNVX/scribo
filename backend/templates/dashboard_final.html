@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scribo Admin Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .map-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .map-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .logout-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid #667eea;
+        }
+        
+        .stat-card h3 {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Layout principal: Usuarios e API lado a lado */
+        .main-content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .users-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .api-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+        }
+        
+        .section-header {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .section-header h2 {
+            color: #1e293b;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .users-table th,
+        .users-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .users-table th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+        
+        .tier-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .tier-free {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+        
+        .tier-premium {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        
+        .tier-vitalicio {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+        
+        .api-list {
+            list-style: none;
+        }
+        
+        .api-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .api-item:last-child {
+            border-bottom: none;
+        }
+        
+        .api-name {
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .api-stats {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        /* Timeline em linha separada */
+        .timeline-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        /* Grid de graficos abaixo - 2 colunas */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .chart-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .chart-header {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .chart-header h3 {
+            color: #1e293b;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        
+        .chart-content {
+            padding: 1.5rem;
+            height: 400px;
+            position: relative;
+        }
+        
+        .timeline-content {
+            padding: 1.5rem;
+            height: 500px;
+            position: relative;
+        }
+        
+        .time-controls {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .time-btn {
+            background: #f1f5f9;
+            color: #64748b;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .time-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .time-btn:hover {
+            background: #e2e8f0;
+        }
+        
+        .time-btn.active:hover {
+            background: #5a67d8;
+        }
+        
+        .success-message {
+            background: #dcfce7;
+            color: #16a34a;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .error-message {
+            background: #fef2f2;
+            color: #dc2626;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #fecaca;
+        }
+        
+        .btn-change-tier {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background 0.3s;
+        }
+        
+        .btn-change-tier:hover {
+            background: #5a67d8;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .modal-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-header h3 {
+            color: #1e293b;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #000;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎯 Scribo Admin Dashboard</h1>
+        <div class="header-actions">
+            <a href="/admin/map" class="map-btn" title="Dashboard de Geolocalizacao">
+                🗺️ Mapa
+            </a>
+            <span>{{ admin_email }}</span>
+            <a href="/logout" class="logout-btn">Sair</a>
+        </div>
+    </div>
+
+    <div class="container">
+        {% if request.query_params.get('success') == 'tier_updated' %}
+        <div class="success-message">
+            ✅ Tier do usuario atualizado com sucesso!
+        </div>
+        {% endif %}
+        
+        {% if request.query_params.get('error') == 'update_failed' %}
+        <div class="error-message">
+            ❌ Erro ao atualizar tier do usuario.
+        </div>
+        {% endif %}
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total de Usuarios</h3>
+                <div class="value">{{ system_stats.total_users }}</div>
+            </div>
+            <div class="stat-card">
+                <h3>Usuarios Premium</h3>
+                <div class="value">{{ system_stats.premium_users }}</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total de Redacoes</h3>
+                <div class="value">{{ system_stats.total_essays }}</div>
+            </div>
+            <div class="stat-card">
+                <h3>Chamadas de API</h3>
+                <div class="value">{{ system_stats.total_api_calls }}</div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid: Usuarios e API lado a lado -->
+        <div class="main-content-grid">
+            <!-- Usuarios Ativos (lado esquerdo, maior) -->
+            <div class="users-section">
+                <div class="section-header">
+                    <h2>👥 Usuarios Ativos</h2>
+                </div>
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Tier</th>
+                            <th>Redacoes</th>
+                            <th>Nota Media</th>
+                            <th>Acoes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>
+                                <div>
+                                    <strong>{{ user.name }}</strong><br>
+                                    <small>{{ user.email }}</small>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="tier-badge tier-{{ user.tier }}">
+                                    {{ user.tier.title() }}
+                                </span>
+                            </td>
+                            <td>{{ user.total_essays }}</td>
+                            <td>
+                                {% if user.avg_score %}
+                                    {{ user.avg_score }}/10
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            <td>
+                                <button class="btn-change-tier" onclick="openTierModal('{{ user.user_id }}', '{{ user.name }}', '{{ user.tier }}')">
+                                    Alterar Tier
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Uso da API (lado direito) -->
+            <div class="api-section">
+                <div class="section-header">
+                    <h2>🤖 Uso da API</h2>
+                </div>
+                <ul class="api-list">
+                    {% for api_stat in api_stats %}
+                    <li class="api-item">
+                        <div>
+                            <div class="api-name">{{ api_stat.model_name }}</div>
+                            <div class="api-stats">Taxa: {{ (api_stat.success_rate * 100)|round }}%</div>
+                        </div>
+                        <div class="api-stats">
+                            <strong>{{ api_stat.total_calls }}</strong> chamadas<br>
+                            <small>{{ api_stat.last_24h_calls }} nas ultimas 24h</small>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Timeline de Uso da API - Linha separada maior -->
+        <div class="timeline-section">
+            <div class="chart-header">
+                <h3>📈 Timeline de Uso da API</h3>
+            </div>
+            <div class="timeline-content">
+                <div class="time-controls">
+                    <button class="time-btn active" onclick="changeTimeRange(24, this)">24 Horas</button>
+                    <button class="time-btn" onclick="changeTimeRange(168, this)">7 Dias</button>
+                    <button class="time-btn" onclick="changeTimeRange(720, this)">30 Dias</button>
+                </div>
+                <canvas id="timelineChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Charts Grid: Outros graficos lado a lado -->
+        <div class="charts-grid">
+            <!-- Distribuicao de Usuarios -->
+            <div class="chart-section">
+                <div class="chart-header">
+                    <h3>👥 Distribuicao de Usuarios por Tier</h3>
+                </div>
+                <div class="chart-content">
+                    <canvas id="usersChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chamadas de API por Modelo -->
+            <div class="chart-section">
+                <div class="chart-header">
+                    <h3>🤖 Chamadas de API por Modelo</h3>
+                </div>
+                <div class="chart-content">
+                    <canvas id="apiChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para alterar tier -->
+    <div id="tierModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h3>Alterar Tier do Usuario</h3>
+            </div>
+            <form method="post" action="/update-user-tier">
+                <input type="hidden" id="modalUserId" name="user_id" value="">
+                
+                <div class="form-group">
+                    <label for="tier">Novo Tier:</label>
+                    <select id="tier" name="tier" required>
+                        <option value="free">Free</option>
+                        <option value="premium">Premium</option>
+                        <option value="vitalicio">Vitalicio</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="expirationGroup" style="display: none;">
+                    <label for="expires_at">Data de Expiracao (Premium):</label>
+                    <input type="datetime-local" id="expires_at" name="expires_at">
+                </div>
+                
+                <button type="submit" class="btn-primary">Atualizar Tier</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Variaveis globais
+        let timelineChart = null;
+        let currentTimeRange = 24;
+
+        // Modal functionality
+        const modal = document.getElementById('tierModal');
+        const span = document.getElementsByClassName('close')[0];
+        
+        function openTierModal(userId, userName, currentTier) {
+            document.getElementById('modalUserId').value = userId;
+            document.getElementById('tier').value = currentTier;
+            
+            // Show/hide expiration field based on tier
+            const tierSelect = document.getElementById('tier');
+            const expirationGroup = document.getElementById('expirationGroup');
+            
+            tierSelect.addEventListener('change', function() {
+                if (this.value === 'premium') {
+                    expirationGroup.style.display = 'block';
+                } else {
+                    expirationGroup.style.display = 'none';
+                }
+            });
+            
+            // Trigger change event to set initial state
+            tierSelect.dispatchEvent(new Event('change'));
+            
+            modal.style.display = 'block';
+        }
+        
+        span.onclick = function() {
+            modal.style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Funcao para trocar o periodo de tempo
+        async function changeTimeRange(hours, buttonElement) {
+            // Atualizar botoes
+            document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active'));
+            buttonElement.classList.add('active');
+            
+            // Atualizar periodo
+            currentTimeRange = hours;
+            
+            // Recriar grafico
+            if (timelineChart) {
+                timelineChart.destroy();
+            }
+            await createTimelineChart();
+        }
+
+        // Inicializar graficos quando a pagina carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCharts();
+        });
+
+        async function initializeCharts() {
+            try {
+                // 1. Timeline de Uso da API
+                await createTimelineChart();
+                
+                // 2. Distribuicao de Usuarios
+                createUsersChart();
+                
+                // 3. Chamadas de API por Modelo
+                createAPIChart();
+                
+            } catch (error) {
+                console.error('Erro ao inicializar graficos:', error);
+            }
+        }
+
+        // 1. Grafico de Timeline de API
+        async function createTimelineChart() {
+            try {
+                const response = await fetch(`/api/timeline?hours=${currentTimeRange}`);
+                const data = await response.json();
+                
+                const ctx = document.getElementById('timelineChart').getContext('2d');
+                
+                // Processar dados para o grafico
+                const timelineData = data.timeline || [];
+                const hours = [];
+                const callsData = [];
+                
+                // Agrupar por hora
+                const hourlyData = {};
+                timelineData.forEach(item => {
+                    const hour = item.hour;
+                    if (!hourlyData[hour]) {
+                        hourlyData[hour] = 0;
+                    }
+                    hourlyData[hour] += item.calls;
+                });
+                
+                // Criar arrays para o grafico
+                Object.keys(hourlyData).sort().forEach(hour => {
+                    const date = new Date(hour);
+                    if (currentTimeRange <= 24) {
+                        hours.push(date.toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'}));
+                    } else {
+                        hours.push(date.toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit'}));
+                    }
+                    callsData.push(hourlyData[hour]);
+                });
+                
+                timelineChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: hours,
+                        datasets: [{
+                            label: 'Chamadas de API',
+                            data: callsData,
+                            borderColor: '#667eea',
+                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Numero de Chamadas'
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: currentTimeRange <= 24 ? 'Hora' : 'Data'
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Erro ao criar grafico de timeline:', error);
+            }
+        }
+
+        // 2. Grafico de Distribuicao de Usuarios
+        function createUsersChart() {
+            const ctx = document.getElementById('usersChart').getContext('2d');
+            
+            const systemStats = {{ system_stats|tojson }};
+            
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Free', 'Premium', 'Vitalicio'],
+                    datasets: [{
+                        data: [
+                            systemStats.free_users,
+                            systemStats.premium_users,
+                            systemStats.vitalicio_users
+                        ],
+                        backgroundColor: [
+                            '#94a3b8',
+                            '#f59e0b',
+                            '#10b981'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        // 3. Grafico de Chamadas de API por Modelo
+        function createAPIChart() {
+            const ctx = document.getElementById('apiChart').getContext('2d');
+            
+            const apiStats = {{ api_stats|tojson }};
+            
+            const labels = apiStats.map(stat => stat.model_name);
+            const data = apiStats.map(stat => stat.total_calls);
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Chamadas',
+                        data: data,
+                        backgroundColor: '#667eea',
+                        borderColor: '#5a67d8',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Numero de Chamadas'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Modelos de IA'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

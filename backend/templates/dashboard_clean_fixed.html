@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scribo Admin Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .map-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .map-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .logout-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid #667eea;
+        }
+        
+        .stat-card h3 {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .users-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .section-header {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .section-header h2 {
+            color: #1e293b;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .users-table th,
+        .users-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .users-table th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+        
+        .tier-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .tier-free {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+        
+        .tier-premium {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        
+        .tier-vitalicio {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+        
+        .api-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+        }
+        
+        .api-list {
+            list-style: none;
+        }
+        
+        .api-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .api-item:last-child {
+            border-bottom: none;
+        }
+        
+        .api-name {
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .api-stats {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .success-message {
+            background: #dcfce7;
+            color: #16a34a;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .error-message {
+            background: #fef2f2;
+            color: #dc2626;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #fecaca;
+        }
+        
+        .btn-change-tier {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background 0.3s;
+        }
+        
+        .btn-change-tier:hover {
+            background: #5a67d8;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .modal-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-header h3 {
+            color: #1e293b;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #000;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎯 Scribo Admin Dashboard</h1>
+        <div class="header-actions">
+            <a href="/admin/map" class="map-btn" title="Dashboard de Geolocalizacao">
+                🗺️ Mapa
+            </a>
+            <span>{{ admin_email }}</span>
+            <a href="/logout" class="logout-btn">Sair</a>
+        </div>
+    </div>
+
+    <div class="container">
+        {% if request.query_params.get('success') == 'tier_updated' %}
+        <div class="success-message">
+            ✅ Tier do usuario atualizado com sucesso!
+        </div>
+        {% endif %}
+        
+        {% if request.query_params.get('error') == 'update_failed' %}
+        <div class="error-message">
+            ❌ Erro ao atualizar tier do usuario.
+        </div>
+        {% endif %}
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total de Usuarios</h3>
+                <div class="value">{{ system_stats.total_users }}</div>
+            </div>
+            <div class="stat-card">
+                <h3>Usuarios Premium</h3>
+                <div class="value">{{ system_stats.premium_users }}</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total de Redacoes</h3>
+                <div class="value">{{ system_stats.total_essays }}</div>
+            </div>
+            <div class="stat-card">
+                <h3>Chamadas de API</h3>
+                <div class="value">{{ system_stats.total_api_calls }}</div>
+            </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h3>Distribuição de Usuários</h3>
+                <canvas id="userTierChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Chamadas de API por Modelo</h3>
+                <canvas id="apiUsageChart"></canvas>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="content-grid">
+            <!-- Users Section -->
+            <div class="users-section">
+                <div class="section-header">
+                    <h2>👥 Usuarios Ativos</h2>
+                </div>
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Tier</th>
+                            <th>Redacoes</th>
+                            <th>Nota Media</th>
+                            <th>Acoes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>
+                                <div>
+                                    <strong>{{ user.name }}</strong><br>
+                                    <small>{{ user.email }}</small>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="tier-badge tier-{{ user.tier }}">
+                                    {{ user.tier.title() }}
+                                </span>
+                            </td>
+                            <td>{{ user.total_essays }}</td>
+                            <td>
+                                {% if user.avg_score %}
+                                    {{ user.avg_score }}/10
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            <td>
+                                <button class="btn-change-tier" onclick="openTierModal('{{ user.user_id }}', '{{ user.name }}', '{{ user.tier }}')">
+                                    Alterar Tier
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- API Usage Section -->
+            <div class="api-section">
+                <div class="section-header">
+                    <h2>🤖 Uso da API</h2>
+                </div>
+                <ul class="api-list">
+                    {% for api_stat in api_stats %}
+                    <li class="api-item">
+                        <div>
+                            <div class="api-name">{{ api_stat.model_name }}</div>
+                            <div class="api-stats">Taxa: {{ api_stat.success_rate * 100 }}%</div>
+                        </div>
+                        <div class="api-stats">
+                            <strong>{{ api_stat.total_calls }}</strong> chamadas<br>
+                            <small>{{ api_stat.last_24h_calls }} nas ultimas 24h</small>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- API Timeline Chart Section -->
+        <div class="timeline-section">
+            <div class="section-header">
+                <h2>📈 Timeline de Uso da API</h2>
+                <div class="timeline-controls">
+                    <select id="modelSelector">
+                        <option value="all">Todos os Modelos</option>
+                        {% for api_stat in api_stats %}
+                        <option value="{{ api_stat.model_name }}">{{ api_stat.model_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <select id="timeRangeSelector">
+                        <option value="1">1 Hora</option>
+                        <option value="24" selected>24 Horas</option>
+                        <option value="168">7 Dias</option>
+                        <option value="720">30 Dias</option>
+                    </select>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="apiTimelineChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para alterar tier -->
+    <div id="tierModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h3>Alterar Tier do Usuario</h3>
+            </div>
+            <form method="post" action="/update-user-tier">
+                <input type="hidden" id="modalUserId" name="user_id" value="">
+                
+                <div class="form-group">
+                    <label for="tier">Novo Tier:</label>
+                    <select id="tier" name="tier" required>
+                        <option value="free">Free</option>
+                        <option value="premium">Premium</option>
+                        <option value="vitalicio">Vitalicio</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="expirationGroup" style="display: none;">
+                    <label for="expires_at">Data de Expiracao (Premium):</label>
+                    <input type="datetime-local" id="expires_at" name="expires_at">
+                </div>
+                
+                <button type="submit" class="btn-primary">Atualizar Tier</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('tierModal');
+        const span = document.getElementsByClassName('close')[0];
+        
+        function openTierModal(userId, userName, currentTier) {
+            document.getElementById('modalUserId').value = userId;
+            document.getElementById('tier').value = currentTier;
+            
+            // Show/hide expiration field based on tier
+            const tierSelect = document.getElementById('tier');
+            const expirationGroup = document.getElementById('expirationGroup');
+            
+            tierSelect.addEventListener('change', function() {
+                if (this.value === 'premium') {
+                    expirationGroup.style.display = 'block';
+                } else {
+                    expirationGroup.style.display = 'none';
+                }
+            });
+            
+            // Trigger change event to set initial state
+            tierSelect.dispatchEvent(new Event('change'));
+            
+            modal.style.display = 'block';
+        }
+        
+        span.onclick = function() {
+            modal.style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('tierModal');
+        const span = document.getElementsByClassName('close')[0];
+        
+        function openTierModal(userId, userName, currentTier) {
+            document.getElementById('modalUserId').value = userId;
+            document.getElementById('tier').value = currentTier;
+            
+            // Show/hide expiration field based on tier
+            const tierSelect = document.getElementById('tier');
+            const expirationGroup = document.getElementById('expirationGroup');
+            
+            tierSelect.addEventListener('change', function() {
+                if (this.value === 'premium') {
+                    expirationGroup.style.display = 'block';
+                } else {
+                    expirationGroup.style.display = 'none';
+                }
+            });
+            
+            // Trigger change event to set initial state
+            tierSelect.dispatchEvent(new Event('change'));
+            
+            modal.style.display = 'block';
+        }
+        
+        span.onclick = function() {
+            modal.style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Data from backend
+        const users = {{ users | tojson }};
+        const apiStats = {{ api_stats | tojson }};
+        const systemStats = {{ system_stats | tojson }};
+
+        // User Tier Chart (Pie Chart)
+        const userTierCtx = document.getElementById('userTierChart').getContext('2d');
+        new Chart(userTierCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Free', 'Premium', 'Vitalicio'],
+                datasets: [{
+                    label: 'Distribuição de Tiers',
+                    data: [systemStats.free_users, systemStats.premium_users, systemStats.vitalicio_users],
+                    backgroundColor: [
+                        'rgba(100, 116, 139, 0.7)',
+                        'rgba(251, 191, 36, 0.7)',
+                        'rgba(52, 211, 153, 0.7)'
+                    ],
+                    borderColor: [
+                        '#64748b',
+                        '#fbb_f24',
+                        '#34d399'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+
+        // API Usage Chart (Bar Chart)
+        const apiUsageCtx = document.getElementById('apiUsageChart').getContext('2d');
+        new Chart(apiUsageCtx, {
+            type: 'bar',
+            data: {
+                labels: apiStats.map(s => s.model_name),
+                datasets: [{
+                    label: 'Total de Chamadas',
+                    data: apiStats.map(s => s.total_calls),
+                    backgroundColor: 'rgba(102, 126, 234, 0.7)',
+                    borderColor: '#667eea',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // API Timeline Chart (Line Chart)
+        const timelineCtx = document.getElementById('apiTimelineChart').getContext('2d');
+        let timelineChart;
+
+        async function fetchTimelineData(model, hours) {
+            const url = model === 'all' ? `/api/timeline?hours=${hours}` : `/api/timeline/${model}?hours=${hours}`;
+            const response = await fetch(url);
+            if (!response.ok) {
+                console.error("Failed to fetch timeline data");
+                return [];
+            }
+            const data = await response.json();
+            return data.timeline;
+        }
+
+        function createTimelineChart(data) {
+            const datasets = {
+                calls: {
+                    label: 'Número de Chamadas',
+                    data: data.map(d => ({x: d.hour, y: d.calls})),
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.5)',
+                    yAxisID: 'y',
+                    tension: 0.3
+                },
+                responseTime: {
+                    label: 'Tempo de Resposta (ms)',
+                    data: data.map(d => ({x: d.hour, y: d.avg_response_time * 1000})),
+                    borderColor: '#34d399',
+                    backgroundColor: 'rgba(52, 211, 153, 0.5)',
+                    yAxisID: 'y1',
+                    tension: 0.3
+                }
+            };
+
+            if (timelineChart) {
+                timelineChart.destroy();
+            }
+
+            timelineChart = new Chart(timelineCtx, {
+                type: 'line',
+                data: { datasets: Object.values(datasets) },
+                options: {
+                    responsive: true,
+                    interaction: { mode: 'index', intersect: false },
+                    scales: {
+                        x: { type: 'time', time: { unit: 'hour' } },
+                        y: { type: 'linear', display: true, position: 'left', title: { display: true, text: 'Chamadas' } },
+                        y1: { type: 'linear', display: true, position: 'right', title: { display: true, text: 'Tempo (ms)' }, grid: { drawOnChartArea: false } }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            onClick: (e, legendItem, legend) => {
+                                const index = legendItem.datasetIndex;
+                                const ci = legend.chart;
+                                if (ci.isDatasetVisible(index)) {
+                                    ci.hide(index);
+                                    legendItem.hidden = true;
+                                } else {
+                                    ci.show(index);
+                                    legendItem.hidden = false;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        async function updateTimelineChart() {
+            const selectedModel = document.getElementById('modelSelector').value;
+            const selectedHours = document.getElementById('timeRangeSelector').value;
+            const data = await fetchTimelineData(selectedModel, selectedHours);
+            createTimelineChart(data);
+        }
+
+        document.getElementById('modelSelector').addEventListener('change', updateTimelineChart);
+        document.getElementById('timeRangeSelector').addEventListener('change', updateTimelineChart);
+
+        // Initial chart load
+        updateTimelineChart();
+
+    </script>
+</body>
+</html>
