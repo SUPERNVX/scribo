@@ -25,10 +25,11 @@ from ai_service import ai_service
 
 # Setup
 app = FastAPI(title="Scribo Admin Dashboard", description="Dashboard administrativo para gerenciar usuários e monitorar sistema")
-templates = Jinja2Templates(directory="/app/backend/templates")
+# Usar caminho relativo para funcionar tanto localmente quanto no container
+templates = Jinja2Templates(directory="backend/templates")
 
 # Create templates directory if it doesn't exist
-templates_dir = Path("/app/backend/templates")
+templates_dir = Path("backend/templates")
 templates_dir.mkdir(exist_ok=True, parents=True)
 
 # Setup logging
