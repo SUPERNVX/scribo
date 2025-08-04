@@ -69,6 +69,5 @@ inicializacao/start_fresh.bat
 # Outros arquivos e diretórios a ignorar
 .kiro/
 base_tep2/
-templates/
 Dashboard_mapa.jpg
 inicializacao/
